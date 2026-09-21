@@ -1,0 +1,617 @@
+<!DOCTYPE html>
+<!--
+  VEREDA — travel consulting site
+  =================================
+  DEPLOY (get a real domain):
+    1. Easiest: drag this whole /vereda folder onto https://app.netlify.com/drop
+       (or connect a GitHub repo to Netlify). Netlify auto-detects the <form>
+       below (it has data-netlify="true") and starts collecting submissions
+       in your Netlify dashboard — no extra signup needed.
+    2. Buy a domain anywhere (Registro.br, Namecheap, etc.) and point it at
+       the Netlify site under Site settings → Domain management. Free SSL
+       is automatic.
+    3. NOT using Netlify? Replace the <form> tag's action + remove the
+       data-netlify/netlify-honeypot attributes, and point action= at a
+       service like https://formspree.io instead. Marked below with "FORM".
+
+  PHOTOS:
+    Hero images and founder portraits are real photos (in /images). The
+    market and city-skyline placeholders in the Services section are still
+    styled stand-ins — swap those for real photography when you have it.
+
+  LANGUAGES:
+    Portuguese is the default language on load. Only EN and PT are filled
+    in for now, on purpose, so you can review the design before we
+    duplicate it into DE/FR/ES/NL. To add a language later: add a matching
+    object under `translations` (copy the "en" block) and add a button in
+    the language switcher. Marked below with "I18N".
+-->
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vereda — Consultoria de Viagem</title>
+<meta name="description" content="A Vereda cria roteiros sob medida e apoia viagens em grupo, de acordo com seu tempo, orçamento e interesses.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#F4EEE2;
+    --bg-alt:#EFE7D6;
+    --ink:#1C201B;
+    --ink-soft:#5B5A50;
+    --accent:#BE7B44;
+    --green:#213D2D;
+    --green-deep:#182C20;
+    --border:#DED2B8;
+    --cream:#F4EEE2;
+    --max:1180px;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',system-ui,sans-serif;
+    font-size:16px;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3{
+    font-family:'Newsreader',Georgia,serif;
+    font-weight:500;
+    line-height:1.1;
+    margin:0;
+    color:var(--ink);
+  }
+  em, .quote{font-style:italic;}
+  p{margin:0 0 1em;color:var(--ink-soft);}
+  a{color:inherit;}
+  img{max-width:100%;display:block;}
+  .wrap{max-width:var(--max);margin:0 auto;padding:0 32px;}
+  .eyebrow{
+    font-size:.72rem;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--accent);
+    font-weight:600;
+    margin-bottom:14px;
+    display:block;
+  }
+  section{padding:96px 0;}
+  .border-top{border-top:1px solid var(--border);}
+
+  /* buttons / links */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    gap:8px;
+    font-size:.78rem;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    font-weight:600;
+    text-decoration:none;
+    padding-bottom:3px;
+    border-bottom:1px solid currentColor;
+    color:var(--green);
+    background:none;
+    border-left:none;border-right:none;border-top:none;
+    cursor:pointer;
+    font-family:'Inter',sans-serif;
+  }
+  .btn:hover{color:var(--accent);}
+  .btn-outline{
+    border:1px solid var(--green);
+    border-bottom:1px solid var(--green);
+    padding:12px 22px;
+    border-radius:0;
+  }
+  .btn-outline:hover{background:var(--green);color:var(--cream);}
+
+  /* header */
+  header{
+    position:sticky;top:0;z-index:50;
+    background:var(--bg);
+    border-bottom:1px solid var(--border);
+  }
+  header .wrap{
+    display:flex;align-items:center;justify-content:space-between;
+    height:76px;
+  }
+  .logo{
+    font-family:'Newsreader',serif;
+    font-size:1.15rem;
+    letter-spacing:.12em;
+    font-weight:500;
+  }
+  nav{display:flex;gap:32px;}
+  nav a{
+    font-size:.78rem;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;color:var(--ink);font-weight:500;
+  }
+  nav a:hover{color:var(--accent);}
+  .header-right{display:flex;align-items:center;gap:22px;}
+  .lang-switch{display:flex;gap:10px;font-size:.72rem;letter-spacing:.08em;}
+  .lang-switch button{
+    background:none;border:none;cursor:pointer;
+    font-family:'Inter',sans-serif;
+    color:var(--ink-soft);padding:4px 2px;
+  }
+  .lang-switch button.active{color:var(--accent);font-weight:600;}
+  .lang-dropdown{display:none;position:relative;}
+  .lang-dropdown-btn{
+    background:none;border:1px solid var(--border);
+    padding:6px 10px;font-size:.72rem;letter-spacing:.06em;
+    text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .lang-dropdown-list{
+    display:none;position:absolute;right:0;top:calc(100% + 6px);
+    background:var(--bg);border:1px solid var(--border);min-width:90px;
+  }
+  .lang-dropdown-list.open{display:block;}
+  .lang-dropdown-list button{
+    display:block;width:100%;text-align:left;padding:8px 10px;
+    background:none;border:none;font-size:.72rem;letter-spacing:.06em;
+    text-transform:uppercase;cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .contact-btn{
+    border:1px solid var(--ink);padding:9px 18px;
+    font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    text-decoration:none;color:var(--ink);font-weight:500;
+  }
+  .contact-btn:hover{background:var(--ink);color:var(--bg);}
+  .nav-toggle{display:none;background:none;border:none;cursor:pointer;}
+
+  /* hero */
+  .hero{padding-top:72px;padding-bottom:72px;}
+  .hero .wrap{
+    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+  }
+  .hero h1{font-size:clamp(3rem,6vw,4.6rem);margin-bottom:26px;}
+  blockquote.quote{
+    margin:0 0 22px;padding-left:18px;border-left:2px solid var(--accent);
+    font-family:'Newsreader',serif;font-size:1.15rem;color:var(--ink);
+  }
+  .hero-cta{margin-top:8px;}
+  .hero-images{position:relative;}
+  .photo-placeholder{
+    background:linear-gradient(135deg,#DCCDA8 0%,#C7A874 45%,#8E8A67 100%);
+    display:flex;align-items:flex-end;
+    position:relative;overflow:hidden;
+  }
+  .photo-placeholder::before{
+    content:'';position:absolute;inset:0;
+    background:radial-gradient(circle at 30% 20%,rgba(255,255,255,.18),transparent 60%);
+  }
+  .ph-icon{
+    position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);
+    opacity:.35;
+  }
+  .ph-label{
+    position:relative;z-index:2;padding:12px 14px;
+    font-size:.66rem;letter-spacing:.08em;text-transform:uppercase;
+    color:#2A2A22;background:rgba(244,238,226,.72);width:100%;
+  }
+  .hero-img-a{height:420px;object-fit:cover;width:100%;}
+  .hero-img-b{
+    position:absolute;left:-40px;bottom:-56px;width:52%;height:260px;
+    border:6px solid var(--bg);object-fit:cover;
+  }
+
+  /* marquee */
+  .marquee{
+    border-top:1px solid var(--border);border-bottom:1px solid var(--border);
+    overflow:hidden;padding:14px 0;
+  }
+  .marquee-track{
+    display:inline-flex;white-space:nowrap;
+    animation:scroll 32s linear infinite;
+  }
+  .marquee-track span{
+    font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;
+    color:var(--ink-soft);opacity:.65;padding:0 18px;
+  }
+  @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
+
+  /* services */
+  .services-head{
+    display:grid;grid-template-columns:1fr 1.1fr;gap:60px;margin-bottom:56px;
+  }
+  .services-head h2{font-size:2.1rem;}
+  .cards{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
+  .card{padding:40px;border-left:1px solid var(--border);}
+  .card:first-child{border-left:none;}
+  .card .num{font-family:'Newsreader',serif;font-style:italic;color:var(--accent);font-size:1.3rem;margin-bottom:10px;display:block;}
+  .card h3{font-size:1.4rem;margin-bottom:14px;}
+  .services-photos{display:grid;grid-template-columns:1fr 1.6fr;gap:2px;margin-top:2px;}
+  .services-photos .photo-placeholder{height:280px;}
+
+  /* approach */
+  .approach .wrap{max-width:760px;}
+  .approach h2{font-size:2.1rem;margin-bottom:28px;}
+
+  /* about */
+  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;}
+  .founder .photo-placeholder{height:340px;margin-bottom:22px;}
+  .founder-photo{height:340px;margin-bottom:22px;width:100%;object-fit:cover;}
+  .founder h3{font-size:1.5rem;display:inline;}
+  .founder .role{
+    font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
+    color:var(--accent);margin-left:10px;
+  }
+  .founder p{margin-top:10px;}
+
+  /* contact */
+  .contact{background:var(--green);color:var(--cream);}
+  .contact h2{color:var(--cream);font-size:2.1rem;margin-bottom:10px;}
+  .contact .eyebrow{color:#C99A66;}
+  .contact-sub{color:#CFD8CE;max-width:520px;margin-bottom:44px;}
+  form#contact-form{display:grid;grid-template-columns:1fr 1fr;gap:22px 28px;max-width:820px;}
+  .field{display:flex;flex-direction:column;gap:8px;}
+  .field.full{grid-column:1 / -1;}
+  label{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:#CFD8CE;}
+  input,select,textarea{
+    background:transparent;border:none;border-bottom:1px solid rgba(244,238,226,.4);
+    color:var(--cream);font-family:'Inter',sans-serif;font-size:.95rem;
+    padding:8px 2px;outline:none;
+  }
+  input::placeholder,textarea::placeholder{color:#8FA090;}
+  select{appearance:none;-webkit-appearance:none;}
+  select option{color:#111;}
+  input:focus,select:focus,textarea:focus{border-bottom-color:var(--cream);}
+  .submit-row{grid-column:1 / -1;margin-top:6px;}
+  .submit-btn{
+    border:1px solid var(--cream);background:none;color:var(--cream);
+    padding:12px 26px;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;
+    cursor:pointer;font-family:'Inter',sans-serif;
+  }
+  .submit-btn:hover{background:var(--cream);color:var(--green);}
+  .hp-field{position:absolute;left:-9999px;}
+  .form-msg{grid-column:1 / -1;font-size:.9rem;color:#D9C08A;display:none;}
+  .form-msg.show{display:block;}
+
+  /* footer */
+  footer{padding:48px 0 40px;}
+  footer .wrap{
+    display:flex;justify-content:space-between;align-items:center;
+    flex-wrap:wrap;gap:16px;
+  }
+  footer .logo{font-size:.9rem;}
+  .footer-meta{font-size:.78rem;color:var(--ink-soft);text-align:right;}
+  .footer-meta a{text-decoration:underline;color:var(--ink-soft);}
+
+  @media (max-width:860px){
+    nav{display:none;}
+    .nav-toggle{display:block;}
+    .lang-switch{display:none;}
+    .lang-dropdown{display:block;}
+    .hero .wrap{grid-template-columns:1fr;}
+    .hero-img-b{position:static;width:100%;margin-top:16px;border:none;}
+    .services-head{grid-template-columns:1fr;gap:24px;}
+    .cards{grid-template-columns:1fr;}
+    .card{border-left:none;border-top:1px solid var(--border);}
+    .card:first-child{border-top:none;}
+    .services-photos{grid-template-columns:1fr;}
+    .about-grid{grid-template-columns:1fr;}
+    form#contact-form{grid-template-columns:1fr;}
+    section{padding:64px 0;}
+    footer .wrap{flex-direction:column;align-items:flex-start;}
+    .footer-meta{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="logo">VEREDA</div>
+    <nav>
+      <a href="#approach" data-i18n="nav_approach">Approach</a>
+      <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#about" data-i18n="nav_about">About</a>
+    </nav>
+    <div class="header-right">
+      <div class="lang-switch"><!-- I18N: add a <button data-lang="de">DE</button> etc. here later -->
+        <button data-lang="en">EN</button>
+        <button data-lang="pt" class="active">PT</button>
+      </div>
+      <div class="lang-dropdown">
+        <button class="lang-dropdown-btn" id="lang-dd-btn">PT</button>
+        <div class="lang-dropdown-list" id="lang-dd-list">
+          <button data-lang="en">English</button>
+          <button data-lang="pt">Português</button>
+        </div>
+      </div>
+      <a href="#contact" class="contact-btn" data-i18n="nav_contact">Contact</a>
+    </div>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap">
+    <div>
+      <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
+      <h1>Vereda.</h1>
+      <blockquote class="quote" data-i18n="hero_quote">Vereda: a path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.</blockquote>
+      <p data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
+      <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
+    </div>
+    <div class="hero-images">
+      <img src="images/hero-kite.jpg" alt="Kitesurfing at sea" class="hero-img-a">
+      <img src="images/hero-mountain.jpg" alt="Hiking a mountain ridge" class="hero-img-b">
+    </div>
+  </div>
+</section>
+
+<section id="services">
+  <div class="wrap">
+    <div class="services-head">
+      <div>
+        <span class="eyebrow" data-i18n="services_eyebrow">SERVICES</span>
+        <h2 data-i18n="services_h2">Two ways to travel with us.</h2>
+      </div>
+      <p data-i18n="services_intro">We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.</p>
+    </div>
+    <div class="cards">
+      <div class="card">
+        <span class="num">01</span>
+        <h3 data-i18n="service1_title">Custom itineraries</h3>
+        <p data-i18n="service1_body">Trips designed around your interests and your group's interests: architecture, music, gastronomy, history, nature, sports, or a combination.</p>
+        <a href="#contact" class="btn" data-i18n="service1_cta">Request a proposal</a>
+      </div>
+      <div class="card">
+        <span class="num">02</span>
+        <h3 data-i18n="service2_title">Group trips</h3>
+        <p data-i18n="service2_body">Support organizing group trips, based on each traveller's availability, budget and interests.</p>
+        <a href="#contact" class="btn" data-i18n="service2_cta">Request a proposal</a>
+      </div>
+    </div>
+    <div class="services-photos">
+      <!-- PHOTO: replace with a real market / craft scene -->
+      <div class="photo-placeholder">
+        <svg class="ph-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A2A22" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-11 11"/></svg>
+        <span class="ph-label" data-i18n="ph_market">Photo — market scene</span>
+      </div>
+      <!-- PHOTO: replace with a real skyline / sunset shot -->
+      <div class="photo-placeholder">
+        <svg class="ph-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A2A22" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-11 11"/></svg>
+        <span class="ph-label" data-i18n="ph_skyline">Photo — city at dusk</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="approach" class="approach border-top">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="approach_eyebrow">APPROACH</span>
+    <h2 data-i18n="approach_h2">The route you choose changes what you see.</h2>
+    <p data-i18n="approach_p1">Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.</p>
+    <p data-i18n="approach_p2">We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.</p>
+  </div>
+</section>
+
+<section id="about" class="border-top">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="about_eyebrow">ABOUT</span>
+    <h2 data-i18n="about_h2">Our consultants.</h2>
+    <div class="about-grid">
+      <div class="founder">
+        <img src="images/luca.jpg" alt="Luca" class="founder-photo">
+        <h3>Luca</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
+      </div>
+      <div class="founder">
+        <img src="images/samuel.jpg" alt="Samuel" class="founder-photo">
+        <h3>Samuel</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
+      </div>
+    </div>
+    <p style="margin-top:40px;" data-i18n="about_footer_line">Our consultants work in Portuguese, English, Spanish, French, German and Dutch.</p>
+  </div>
+</section>
+
+<section id="contact" class="contact">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="contact_eyebrow">CONTACT</span>
+    <h2 data-i18n="contact_h2">Tell us about your trip.</h2>
+    <p class="contact-sub" data-i18n="contact_sub">A few details help us put together a first proposal. We'll reply personally, usually within two business days.</p>
+
+    <!-- FORM: Netlify auto-detects this form at deploy time because of
+         data-netlify="true" + the hidden form-name input below. Using a
+         different host? Swap the action= for your provider (e.g. Formspree)
+         and drop the netlify-specific attributes. -->
+    <form id="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/?success=true">
+      <input type="hidden" name="form-name" value="contact">
+      <p class="hp-field"><label>Don't fill this out: <input name="bot-field"></label></p>
+
+      <div class="field">
+        <label data-i18n="f_name">Name</label>
+        <input type="text" name="name" required>
+      </div>
+      <div class="field">
+        <label data-i18n="f_email">Email</label>
+        <input type="email" name="email" required>
+      </div>
+      <div class="field full">
+        <label data-i18n="f_destination">Destination of interest</label>
+        <input type="text" name="destination" data-i18n-ph="f_destination_ph" placeholder="e.g. coastal towns, architecture, a specific country">
+      </div>
+      <div class="field">
+        <label data-i18n="f_when">When are you planning to travel?</label>
+        <input type="text" name="when" data-i18n-ph="f_when_ph" placeholder="e.g. next spring">
+      </div>
+      <div class="field">
+        <label data-i18n="f_travelers">Number of travellers</label>
+        <input type="text" name="travelers">
+      </div>
+      <div class="field">
+        <label data-i18n="f_budget">Approximate budget (per person)</label>
+        <select name="budget">
+          <option data-i18n="budget_1">Under $3,000</option>
+          <option data-i18n="budget_2">$3,000 – $6,000</option>
+          <option data-i18n="budget_3">$6,000 – $10,000</option>
+          <option data-i18n="budget_4">$10,000+</option>
+        </select>
+      </div>
+      <div class="field">
+        <label data-i18n="f_source">How did you hear about Vereda?</label>
+        <select name="source">
+          <option data-i18n="source_1">Friend or referral</option>
+          <option data-i18n="source_2">Instagram</option>
+          <option data-i18n="source_3">Search engine</option>
+          <option data-i18n="source_4">Other</option>
+        </select>
+      </div>
+      <div class="submit-row">
+        <button type="submit" class="submit-btn" data-i18n="f_submit">Send</button>
+        <p class="form-msg" id="form-msg" data-i18n="form_success">Thank you — we'll be in touch soon.</p>
+      </div>
+    </form>
+  </div>
+</section>
+
+<footer class="border-top">
+  <div class="wrap">
+    <div class="logo">VEREDA</div>
+    <div class="footer-meta">
+      <div>© 2026 Vereda — <a href="mailto:contact@vereda-tours.com">contact@vereda-tours.com</a></div>
+    </div>
+  </div>
+</footer>
+
+<script>
+/* ---------- I18N: translations ---------- */
+const translations = {
+  en: {
+    nav_approach:"Approach", nav_services:"Services", nav_about:"About", nav_contact:"Contact",
+    hero_eyebrow:"PRIVATE TRAVEL CONSULTING",
+    hero_quote:"Vereda: a path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.",
+    hero_body:"Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.",
+    hero_cta:"Request a proposal",
+    services_eyebrow:"SERVICES", services_h2:"Two ways to travel with us.",
+    services_intro:"We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.",
+    service1_title:"Custom itineraries",
+    service1_body:"Trips designed around your interests and your group's interests: architecture, music, gastronomy, history, nature, sports, or a combination.",
+    service1_cta:"Request a proposal",
+    service2_title:"Group trips",
+    service2_body:"Support organizing group trips, based on each traveller's availability, budget and interests.",
+    service2_cta:"Request a proposal",
+    ph_market:"Photo — market scene", ph_skyline:"Photo — city at dusk",
+    approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see.",
+    approach_p1:"Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.",
+    approach_p2:"We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.",
+    about_eyebrow:"ABOUT", about_h2:"Our consultants.",
+    role_cofounder:"Consultant",
+    about_footer_line:"Our consultants work in Portuguese, English, Spanish, French, German and Dutch.",
+    contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
+    contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
+    f_name:"Name", f_email:"Email",
+    f_destination:"Destination of interest", f_destination_ph:"e.g. coastal towns, architecture, a specific country",
+    f_when:"When are you planning to travel?", f_when_ph:"e.g. next spring",
+    f_travelers:"Number of travellers",
+    f_budget:"Approximate budget (per person)",
+    budget_1:"Under $3,000", budget_2:"$3,000 – $6,000", budget_3:"$6,000 – $10,000", budget_4:"$10,000+",
+    f_source:"How did you hear about Vereda?",
+    source_1:"Friend or referral", source_2:"Instagram", source_3:"Search engine", source_4:"Other",
+    f_submit:"Send",
+    form_success:"Thank you — we'll be in touch soon."
+  },
+  pt: {
+    nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Sobre", nav_contact:"Contato",
+    hero_eyebrow:"CONSULTORIA DE VIAGEM PERSONALIZADA",
+    hero_quote:"Vereda: um caminho, uma trilha, a rota que alguém escolhe ao atravessar uma paisagem. A forma e o roteiro da sua viagem moldam o que você vê.",
+    hero_body:"Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos.",
+    hero_cta:"Solicitar proposta",
+    services_eyebrow:"SERVIÇOS", services_h2:"Duas formas de viajar com a gente.",
+    services_intro:"Somos um grupo de consultores que individualiza o planejamento das suas necessidades. A partir do planejamento do roteiro e orçamento, cada viagem é construída em torno de regiões, temas e ritmo que você pedir.",
+    service1_title:"Roteiros sob medida",
+    service1_body:"Viagens desenhadas em torno dos seus interesses e dos interesses do seu grupo: arquitetura, música, gastronomia, história, natureza, esportes ou uma combinação.",
+    service1_cta:"Solicitar proposta",
+    service2_title:"Viagens em grupo",
+    service2_body:"Apoio à organização de viagens em grupo, com base em disponibilidades, orçamentos e interesses de cada integrante.",
+    service2_cta:"Solicitar proposta",
+    ph_market:"Foto — cena de mercado", ph_skyline:"Foto — cidade ao entardecer",
+    approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê.",
+    approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
+    approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
+    about_eyebrow:"SOBRE", about_h2:"Nossos consultores.",
+    role_cofounder:"Consultores",
+    about_footer_line:"Nossos consultores trabalham em português, inglês, espanhol, francês, alemão e holandês.",
+    contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
+    contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
+    f_name:"Nome", f_email:"E-mail",
+    f_destination:"Destino de interesse", f_destination_ph:"ex.: cidades litorâneas, arquitetura, um país específico",
+    f_when:"Quando pretende viajar?", f_when_ph:"ex.: próxima primavera",
+    f_travelers:"Número de viajantes",
+    f_budget:"Orçamento aproximado (por pessoa)",
+    budget_1:"Até US$ 3.000", budget_2:"US$ 3.000 – US$ 6.000", budget_3:"US$ 6.000 – US$ 10.000", budget_4:"Acima de US$ 10.000",
+    f_source:"Como você conheceu a Vereda?",
+    source_1:"Indicação de amigo", source_2:"Instagram", source_3:"Busca no Google", source_4:"Outro",
+    f_submit:"Enviar",
+    form_success:"Obrigado — retornaremos em breve."
+  }
+  /* I18N: add "de", "fr", "es", "nl" objects here later, same keys as "en" */
+};
+
+let currentLang = 'pt';
+
+function applyLang(lang){
+  const dict = translations[lang];
+  if(!dict) return;
+  currentLang = lang;
+  document.documentElement.lang = lang;
+
+  document.querySelectorAll('[data-i18n]').forEach(el=>{
+    const key = el.getAttribute('data-i18n');
+    if(dict[key] !== undefined) el.textContent = dict[key];
+  });
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{
+    const key = el.getAttribute('data-i18n-ph');
+    if(dict[key] !== undefined) el.setAttribute('placeholder', dict[key]);
+  });
+
+  document.querySelectorAll('.lang-switch button').forEach(b=>{
+    b.classList.toggle('active', b.dataset.lang === lang);
+  });
+  document.getElementById('lang-dd-btn').textContent = lang.toUpperCase();
+}
+
+document.querySelectorAll('[data-lang]').forEach(btn=>{
+  btn.addEventListener('click', ()=> applyLang(btn.dataset.lang));
+});
+
+document.getElementById('lang-dd-btn').addEventListener('click', ()=>{
+  document.getElementById('lang-dd-list').classList.toggle('open');
+});
+document.addEventListener('click', (e)=>{
+  const dd = document.querySelector('.lang-dropdown');
+  if(dd && !dd.contains(e.target)) document.getElementById('lang-dd-list').classList.remove('open');
+});
+
+applyLang('pt');
+
+/* ---------- Netlify AJAX form submit ---------- */
+const form = document.getElementById('contact-form');
+form.addEventListener('submit', function(e){
+  e.preventDefault();
+  const data = new FormData(form);
+  fetch('/', {
+    method:'POST',
+    headers:{'Content-Type':'application/x-www-form-urlencoded'},
+    body: new URLSearchParams(data).toString()
+  })
+  .then(()=>{
+    form.reset();
+    const msg = document.getElementById('form-msg');
+    msg.classList.add('show');
+  })
+  .catch(()=>{
+    // Fallback for local preview (no Netlify backend to POST to) or non-Netlify hosts
+    const msg = document.getElementById('form-msg');
+    msg.classList.add('show');
+  });
+});
+</script>
+
+</body>
+</html>
