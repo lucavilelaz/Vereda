@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <!--
   VEREDA — travel consulting site
@@ -228,6 +227,7 @@
   .card h3{font-size:1.4rem;margin-bottom:14px;}
   .services-photos{display:grid;grid-template-columns:1fr 1.6fr;gap:2px;margin-top:2px;}
   .services-photos .photo-placeholder{height:280px;}
+  .services-photo{width:100%;height:280px;object-fit:cover;display:block;}
 
   /* approach */
   .approach .wrap{max-width:760px;}
@@ -318,14 +318,14 @@
     </nav>
     <div class="header-right">
       <div class="lang-switch"><!-- I18N: add a <button data-lang="de">DE</button> etc. here later -->
-        <button data-lang="en">EN</button>
         <button data-lang="pt" class="active">PT</button>
+        <button data-lang="en">EN</button>
       </div>
       <div class="lang-dropdown">
         <button class="lang-dropdown-btn" id="lang-dd-btn">PT</button>
         <div class="lang-dropdown-list" id="lang-dd-list">
-          <button data-lang="en">English</button>
           <button data-lang="pt">Português</button>
+          <button data-lang="en">English</button>
         </div>
       </div>
       <a href="#contact" class="contact-btn" data-i18n="nav_contact">Contact</a>
@@ -373,16 +373,8 @@
       </div>
     </div>
     <div class="services-photos">
-      <!-- PHOTO: replace with a real market / craft scene -->
-      <div class="photo-placeholder">
-        <svg class="ph-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A2A22" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-11 11"/></svg>
-        <span class="ph-label" data-i18n="ph_market">Photo — market scene</span>
-      </div>
-      <!-- PHOTO: replace with a real skyline / sunset shot -->
-      <div class="photo-placeholder">
-        <svg class="ph-icon" width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="#2A2A22" stroke-width="1.2"><rect x="3" y="3" width="18" height="18" rx="1"/><circle cx="8.5" cy="8.5" r="1.5"/><path d="M21 15l-5-5-11 11"/></svg>
-        <span class="ph-label" data-i18n="ph_skyline">Photo — city at dusk</span>
-      </div>
+      <img src="IMG_0346.JPG" alt="Gull flying past a building facade" class="services-photo">
+      <img src="IMG_2161.JPG" alt="Two people sitting by a window at dusk" class="services-photo">
     </div>
   </div>
 </section>
@@ -406,11 +398,11 @@
         <h3>Luca</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
       </div>
       <div class="founder">
-        <img src="samuel.jpg" alt="Samuel" class="founder-photo">
+        <img src="IMG_6771.JPG" alt="Samuel" class="founder-photo">
         <h3>Samuel</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
       </div>
     </div>
-    <p style="margin-top:40px;" data-i18n="about_footer_line">Our consultants work in Portuguese, English, Spanish, French, German and Dutch.</p>
+    <p style="margin-top:40px;" data-i18n="about_footer_line">We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.</p>
   </div>
 </section>
 
@@ -504,13 +496,12 @@ const translations = {
     service2_title:"Group trips",
     service2_body:"Support organizing group trips, based on each traveller's availability, budget and interests.",
     service2_cta:"Request a proposal",
-    ph_market:"Photo — market scene", ph_skyline:"Photo — city at dusk",
     approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see.",
     approach_p1:"Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.",
     approach_p2:"We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.",
     about_eyebrow:"ABOUT", about_h2:"Our consultants.",
     role_cofounder:"Consultant",
-    about_footer_line:"Our consultants work in Portuguese, English, Spanish, French, German and Dutch.",
+    about_footer_line:"We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.",
     contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
     contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
     f_name:"Name", f_email:"Email",
@@ -538,13 +529,12 @@ const translations = {
     service2_title:"Viagens em grupo",
     service2_body:"Apoio à organização de viagens em grupo, com base em disponibilidades, orçamentos e interesses de cada integrante.",
     service2_cta:"Solicitar proposta",
-    ph_market:"Foto — cena de mercado", ph_skyline:"Foto — cidade ao entardecer",
     approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê.",
     approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
     approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
     about_eyebrow:"SOBRE", about_h2:"Nossos consultores.",
     role_cofounder:"Consultores",
-    about_footer_line:"Nossos consultores trabalham em português, inglês, espanhol, francês, alemão e holandês.",
+    about_footer_line:"Somos um economista e um geógrafo apaixonados por viajar. Trabalhamos em português, alemão, inglês, francês, espanhol e holandês.",
     contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
     contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
     f_name:"Nome", f_email:"E-mail",
