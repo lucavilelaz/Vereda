@@ -236,7 +236,7 @@
   /* about */
   .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;}
   .founder .photo-placeholder{height:340px;margin-bottom:22px;}
-  .founder-photo{height:340px;margin-bottom:22px;width:100%;object-fit:cover;}
+  .founder-photo{width:100%;height:auto;display:block;margin-bottom:22px;}
   .founder h3{font-size:1.5rem;display:inline;}
   .founder .role{
     font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
@@ -338,7 +338,7 @@
     <div>
       <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
       <h1>Vereda.</h1>
-      <blockquote class="quote" data-i18n="hero_quote">Vereda: a path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.</blockquote>
+      <blockquote class="quote" data-i18n="hero_quote">A path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.</blockquote>
       <p data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
       <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
     </div>
@@ -391,18 +391,17 @@
 <section id="about" class="border-top">
   <div class="wrap">
     <span class="eyebrow" data-i18n="about_eyebrow">ABOUT</span>
-    <h2 data-i18n="about_h2">Our consultants.</h2>
+    <h2 data-i18n="about_h2">We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.</h2>
     <div class="about-grid">
       <div class="founder">
         <img src="luca.jpg" alt="Luca" class="founder-photo">
-        <h3>Luca</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
+        <h3>Luca</h3>
       </div>
       <div class="founder">
         <img src="IMG_6771.JPG" alt="Samuel" class="founder-photo">
-        <h3>Samuel</h3><span class="role" data-i18n="role_cofounder">Consultant</span>
+        <h3>Samuel</h3>
       </div>
     </div>
-    <p style="margin-top:40px;" data-i18n="about_footer_line">We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.</p>
   </div>
 </section>
 
@@ -485,7 +484,7 @@ const translations = {
   en: {
     nav_approach:"Approach", nav_services:"Services", nav_about:"About", nav_contact:"Contact",
     hero_eyebrow:"PRIVATE TRAVEL CONSULTING",
-    hero_quote:"Vereda: a path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.",
+    hero_quote:"A path, a trail, the route someone chooses to take through a landscape. The shape of your trip and itinerary shape what you see.",
     hero_body:"Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.",
     hero_cta:"Request a proposal",
     services_eyebrow:"SERVICES", services_h2:"Two ways to travel with us.",
@@ -499,9 +498,7 @@ const translations = {
     approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see.",
     approach_p1:"Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.",
     approach_p2:"We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.",
-    about_eyebrow:"ABOUT", about_h2:"Our consultants.",
-    role_cofounder:"Consultant",
-    about_footer_line:"We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.",
+    about_eyebrow:"ABOUT", about_h2:"We're an economist and a geographer, passionate about travel. We work in Portuguese, German, English, French, Spanish and Dutch.",
     contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
     contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
     f_name:"Name", f_email:"Email",
@@ -518,7 +515,7 @@ const translations = {
   pt: {
     nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Sobre", nav_contact:"Contato",
     hero_eyebrow:"CONSULTORIA DE VIAGEM PERSONALIZADA",
-    hero_quote:"Vereda: um caminho, uma trilha, a rota que alguém escolhe ao atravessar uma paisagem. A forma e o roteiro da sua viagem moldam o que você vê.",
+    hero_quote:"Um caminho, uma trilha, a rota que alguém escolhe ao atravessar uma paisagem. A forma e o roteiro da sua viagem moldam o que você vê.",
     hero_body:"Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos.",
     hero_cta:"Solicitar proposta",
     services_eyebrow:"SERVIÇOS", services_h2:"Duas formas de viajar com a gente.",
@@ -532,9 +529,7 @@ const translations = {
     approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê.",
     approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
     approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
-    about_eyebrow:"SOBRE", about_h2:"Nossos consultores.",
-    role_cofounder:"Consultores",
-    about_footer_line:"Somos um economista e um geógrafo apaixonados por viajar. Trabalhamos em português, alemão, inglês, francês, espanhol e holandês.",
+    about_eyebrow:"SOBRE", about_h2:"Somos um economista e um geógrafo apaixonados por viajar. Trabalhamos em português, alemão, inglês, francês, espanhol e holandês.",
     contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
     contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
     f_name:"Nome", f_email:"E-mail",
