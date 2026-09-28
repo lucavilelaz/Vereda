@@ -246,6 +246,9 @@
   .services-photos{display:grid;grid-template-columns:1fr 1.6fr;gap:2px;margin-top:2px;}
   .services-photos .photo-placeholder{height:280px;}
   .services-photo{width:100%;height:280px;object-fit:cover;display:block;}
+  /* Shows more of the bottom of the photo (the two people sitting).
+     0% = top of the image, 100% = bottom */
+  .services-photo--window{object-position:center 85%;}
 
   /* approach */
   .approach .wrap{max-width:760px;}
@@ -342,15 +345,17 @@
       <a href="#about" data-i18n="nav_about">About</a>
     </nav>
     <div class="header-right">
-      <div class="lang-switch"><!-- I18N: add a <button data-lang="de">DE</button> etc. here later -->
+      <div class="lang-switch"><!-- I18N: add a <button data-lang="fr">FR</button> etc. here later -->
         <button data-lang="pt" class="active">PT</button>
         <button data-lang="en">EN</button>
+        <button data-lang="de">DE</button>
       </div>
       <div class="lang-dropdown">
         <button class="lang-dropdown-btn" id="lang-dd-btn">PT</button>
         <div class="lang-dropdown-list" id="lang-dd-list">
           <button data-lang="pt">Português</button>
           <button data-lang="en">English</button>
+          <button data-lang="de">Deutsch</button>
         </div>
       </div>
       <a href="#contact" class="contact-btn" data-i18n="nav_contact">Contact</a>
@@ -363,9 +368,9 @@
     <div class="hero-text">
       <div class="hero-top">
         <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
-        <h1>Vereda</h1>
+        <h1>Vereda.</h1>
         <div class="entry">
-          <p class="entry-word">ve·re·da <span class="entry-pos" data-i18n="hero_pos">noun</span></p>
+          <p class="entry-word">ve·re·da <span class="entry-pos" data-i18n="hero_pos">noun · Brazilian Portuguese</span></p>
           <ol class="entry-defs">
             <li data-i18n="hero_def1">A direction or path someone follows in life.</li>
             <li data-i18n="hero_def2">An alternative route that gets you somewhere faster; a shortcut.</li>
@@ -409,7 +414,7 @@
     </div>
     <div class="services-photos">
       <img src="IMG_0346.JPG" alt="Gull flying past a building facade" class="services-photo">
-      <img src="IMG_2161.JPG" alt="Two people sitting by a window at dusk" class="services-photo">
+      <img src="IMG_2161.JPG" alt="Two people sitting by a window at dusk" class="services-photo services-photo--window">
     </div>
   </div>
 </section>
@@ -511,7 +516,7 @@ const translations = {
   en: {
     nav_approach:"Approach", nav_services:"Services", nav_about:"About", nav_contact:"Contact",
     hero_eyebrow:"PRIVATE TRAVEL CONSULTING",
-    hero_pos:"noun",
+    hero_pos:"noun · Brazilian Portuguese",
     hero_def1:"A direction or path someone follows in life.",
     hero_def2:"An alternative route that gets you somewhere faster; a shortcut.",
     hero_def3:"A moment or opportunity; a particular set of circumstances.",
@@ -545,6 +550,43 @@ const translations = {
     f_submit:"Send",
     form_success:"Thank you — we'll be in touch soon."
   },
+  de: {
+    nav_approach:"Ansatz", nav_services:"Leistungen", nav_about:"Über uns", nav_contact:"Kontakt",
+    hero_eyebrow:"INDIVIDUELLE REISEBERATUNG",
+    hero_pos:"Substantiv · brasilianisches Portugiesisch",
+    hero_def1:"Richtung oder Weg, dem jemand im Leben folgt.",
+    hero_def2:"Alternativer Weg, auf dem man schneller an einen bestimmten Ort gelangt; Abkürzung.",
+    hero_def3:"Moment oder Gelegenheit; Umstand.",
+    hero_p1:"Wir sind ein Beratungsteam, das die Planung ganz auf deine Bedürfnisse zuschneidet. Mit unserer Erfahrung helfen wir dir, deine maßgeschneiderte Reiseroute zu entwickeln und deine Reise zu organisieren – allein, in der Gruppe oder mit der Familie, zu sorgfältig ausgewählten Zielen. Ausgehend von Route und Budget planen wir jede Reise rund um die Regionen, Themen und das Tempo, die du dir wünschst.",
+    hero_p2:"Wir begleiten jeden Schritt deiner Planung und berücksichtigen, was deine Reise besonders macht: Vielfliegerprogramme, ein bestimmtes Event am Reiseziel, begrenzte Urlaubstage und vieles mehr.",
+    hero_p3:"Wir beraten auf Portugiesisch, Deutsch, Englisch, Französisch, Spanisch und Niederländisch – mit Lebens- und Berufserfahrung in Brasilien und Europa.",
+    hero_cta:"Angebot anfragen",
+    services_eyebrow:"LEISTUNGEN",
+    service1_title:"Maßgeschneiderte Reiserouten",
+    service1_body:"Reisen rund um deine Interessen: Architektur, Musik, Kulinarik, Geschichte, Natur, Sport oder eine Kombination daraus.",
+    service1_cta:"Angebot anfragen",
+    service2_title:"Gruppenreisen",
+    service2_body:"Unterstützung bei der Organisation von Gruppenreisen – abgestimmt auf Verfügbarkeit, Budget und Interessen aller Mitreisenden.",
+    service2_cta:"Angebot anfragen",
+    approach_eyebrow:"ANSATZ", approach_h2:"Die Route, die du wählst, verändert, was du siehst",
+    approach_p1:"Reisen ist viel mehr, als Ziele von einer Liste abzuhaken. Wir denken die Arbeit klassischer Reisebüros neu und helfen dir, dich im endlosen Meer an Reiseinhalten nicht zu verlieren.",
+    approach_p2:"Wir unterstützen dich bei der Wahl deiner Route – nach deiner Zeit, deinem Budget und deinen persönlichen Interessen. Wir sprechen über die verfügbare Zeit und das gewünschte Tempo und schlagen eine Route mit klarer Logik vor: warum diese Orte, in dieser Reihenfolge, zu dieser Jahreszeit für dich und deine Gruppe sinnvoll sind. Wir passen den Plan an, bis er stimmt, und helfen auf Wunsch auch bei der praktischen Umsetzung: Buchung von Flügen, Hotels, Aktivitäten und mehr.",
+    about_eyebrow:"ÜBER UNS",
+    luca_bio:"Ökonom mit Abschluss an der Bundesuniversität von Minas Gerais (UFMG), mit einem Master in Wirtschafts- und Sozialwissenschaften an der École des hautes études en sciences sociales (EHESS) und einem Master in Ökonomie und nachhaltiger Entwicklung an der Sorbonne Université (Frankreich).",
+    samuel_bio:"Geograph mit Abschluss an der Universität Lissabon, Austauschsemester an der Universität Rotterdam (Niederlande) und Master in Wirtschaftsgeographie an der Universität Aachen (Deutschland).",
+    isabel_bio:"Studentin der International Business Administration an der Hochschule Fresenius (Deutschland), mit Auslandsaufenthalten an der Shanghai University (China) und der University of Technology Sydney (Australien).",
+    contact_eyebrow:"KONTAKT", contact_h2:"Erzähl uns von deiner Reise.",
+    contact_sub:"Ein paar Angaben helfen uns, einen ersten Vorschlag zu erstellen. Wir antworten persönlich, in der Regel innerhalb von zwei Werktagen.",
+    f_name:"Name", f_email:"E-Mail",
+    f_destination:"Wunschziel", f_destination_ph:"z. B. Küstenorte, Architektur, ein bestimmtes Land",
+    f_when:"Wann möchtest du reisen?", f_when_ph:"z. B. nächstes Frühjahr",
+    f_travelers:"Anzahl der Reisenden",
+    f_budget:"Ungefähres Budget pro Person (gesamte Reise)",
+    f_budget_ph:"z. B. 3.000 € oder 15.000 R$",
+    f_source:"Wie hast du von Vereda erfahren?",
+    f_submit:"Senden",
+    form_success:"Vielen Dank – wir melden uns bald bei dir."
+  },
   pt: {
     nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Sobre", nav_contact:"Contato",
     hero_eyebrow:"CONSULTORIA DE VIAGEM PERSONALIZADA",
@@ -564,7 +606,7 @@ const translations = {
     service2_body:"Apoio à organização de viagens em grupo, com base em disponibilidades, orçamentos e interesses de cada integrante.",
     service2_cta:"Solicitar proposta",
     approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê",
-    approach_p1:"Viajar é muito mais do que "colecionar" ou "gabaritar" destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
+    approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
     approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
     about_eyebrow:"SOBRE",
     luca_bio:"Economista formado pela Universidade Federal de Minas Gerais (UFMG), com mestrado em Ciências Econômicas e Sociais pela Escola de Estudos Avançados em Ciências Sociais (EHESS) e em Economia e Desenvolvimento Sustentável pela Universidade Sorbonne (França).",
@@ -582,7 +624,7 @@ const translations = {
     f_submit:"Enviar",
     form_success:"Obrigado — retornaremos em breve."
   }
-  /* I18N: add "de", "fr", "es", "nl" objects here later, same keys as "en" */
+  /* I18N: add "fr", "es", "nl" objects here later, same keys as "en" */
 };
 
 let currentLang = 'pt';
