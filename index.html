@@ -192,7 +192,8 @@
     content:counter(def) ".";position:absolute;left:0;top:0;
     font-style:normal;font-size:.95rem;color:var(--accent);
   }
-  .hero-body{max-width:44ch;margin-bottom:22px;}
+  .hero-body{max-width:52ch;margin-bottom:24px;}
+  .hero-body p{font-size:.95rem;margin-bottom:.9em;}
   .hero-cta{margin-top:0;}
   /* Hero photos: stacked one after the other, same width and height */
   .hero-images{display:flex;flex-direction:column;gap:14px;}
@@ -236,10 +237,7 @@
   @keyframes scroll{from{transform:translateX(0);}to{transform:translateX(-50%);}}
 
   /* services */
-  .services-head{
-    display:grid;grid-template-columns:1fr 1.1fr;gap:60px;margin-bottom:56px;
-  }
-  .services-head h2{font-size:2.1rem;}
+  .services-eyebrow{margin-bottom:28px;}
   .cards{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
   .card{padding:40px;border-left:1px solid var(--border);}
   .card:first-child{border-left:none;}
@@ -321,7 +319,6 @@
     .hero .wrap{grid-template-columns:1fr;}
     .hero-photo{height:290px;}
     .hero-text{gap:28px;}
-    .services-head{grid-template-columns:1fr;gap:24px;}
     .cards{grid-template-columns:1fr;}
     .card{border-left:none;border-top:1px solid var(--border);}
     .card:first-child{border-top:none;}
@@ -377,7 +374,11 @@
         </div>
       </div>
       <div class="hero-bottom">
-        <p class="hero-body" data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
+        <div class="hero-body">
+          <p data-i18n="hero_p1">We're a group of consultants who tailor the planning to your needs. Drawing on our experience, we help you create your custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations. Starting from your itinerary and budget, each trip is designed around the regions, themes and pace you ask for.</p>
+          <p data-i18n="hero_p2">We support every stage of your planning, taking into account what's specific to your trip: frequent-flyer programmes, a particular event at the destination, limited holiday dates and more.</p>
+          <p data-i18n="hero_p3">We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.</p>
+        </div>
         <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
       </div>
     </div>
@@ -391,16 +392,7 @@
 
 <section id="services">
   <div class="wrap">
-    <div class="services-head">
-      <div>
-        <span class="eyebrow" data-i18n="services_eyebrow">SERVICES</span>
-        <h2 data-i18n="services_h2">How to travel with us</h2>
-      </div>
-      <div>
-        <p data-i18n="services_intro">We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.</p>
-        <p data-i18n="about_closing">Together, we're ready to help you make the most of your next trip. We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.</p>
-      </div>
-    </div>
+    <span class="eyebrow services-eyebrow" data-i18n="services_eyebrow">SERVICES</span>
     <div class="cards">
       <div class="card">
         <span class="num">01</span>
@@ -523,10 +515,11 @@ const translations = {
     hero_def1:"A direction or path someone follows in life.",
     hero_def2:"An alternative route that gets you somewhere faster; a shortcut.",
     hero_def3:"A moment or opportunity; a particular set of circumstances.",
-    hero_body:"Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.",
+    hero_p1:"We're a group of consultants who tailor the planning to your needs. Drawing on our experience, we help you create your custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations. Starting from your itinerary and budget, each trip is designed around the regions, themes and pace you ask for.",
+    hero_p2:"We support every stage of your planning, taking into account what's specific to your trip: frequent-flyer programmes, a particular event at the destination, limited holiday dates and more.",
+    hero_p3:"We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.",
     hero_cta:"Request a proposal",
-    services_eyebrow:"SERVICES", services_h2:"How to travel with us",
-    services_intro:"We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.",
+    services_eyebrow:"SERVICES",
     service1_title:"Custom itineraries",
     service1_body:"Trips designed around your interests and your group's interests: architecture, music, gastronomy, history, nature, sports, or a combination.",
     service1_cta:"Request a proposal",
@@ -540,7 +533,6 @@ const translations = {
     luca_bio:"Economist from the Federal University of Minas Gerais (UFMG), with a master's in Economic and Social Sciences from the School for Advanced Studies in the Social Sciences (EHESS) and a master's in Economics and Sustainable Development from Sorbonne University (France).",
     samuel_bio:"Geographer from the University of Lisbon, with an exchange semester at the University of Rotterdam (Netherlands) and a master's in Economic Geography from the University of Aachen (Germany).",
     isabel_bio:"Undergraduate in International Business Administration at Fresenius University of Applied Sciences (Germany), with exchange periods at Shanghai University (China) and the University of Technology Sydney (Australia).",
-    about_closing:"Together, we're ready to help you make the most of your next trip. We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.",
     contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
     contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
     f_name:"Name", f_email:"Email",
@@ -560,10 +552,11 @@ const translations = {
     hero_def1:"Direcionamento ou caminho que alguém segue em sua vida.",
     hero_def2:"Caminho alternativo através do qual se consegue chegar mais rápido a um determinado local; atalho.",
     hero_def3:"Momento ou oportunidade; circunstância.",
-    hero_body:"Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos.",
+    hero_p1:"Somos um grupo de consultores que individualiza o planejamento das suas necessidades. Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos. A partir do planejamento do roteiro e orçamento, cada viagem é pensada em torno de regiões, temas e ritmo que você pedir.",
+    hero_p2:"Acompanhamos cada etapa do seu planejamento levando em conta o que é particular à sua viagem: programas de milhagem, um evento específico no destino, datas limitadas de férias, entre outros.",
+    hero_p3:"Trabalhamos em português, alemão, inglês, francês, espanhol e holandês, com experiência de vida e profissional no Brasil e na Europa.",
     hero_cta:"Solicitar proposta",
-    services_eyebrow:"SERVIÇOS", services_h2:"Como viajar com a gente",
-    services_intro:"Somos um grupo de consultores que individualiza o planejamento das suas necessidades. A partir do planejamento do roteiro e orçamento, cada viagem é construída em torno de regiões, temas e ritmo que você pedir.",
+    services_eyebrow:"SERVIÇOS",
     service1_title:"Roteiros sob medida",
     service1_body:"Viagens desenhadas em torno dos seus interesses: arquitetura, música, gastronomia, história, natureza, esportes ou uma combinação.",
     service1_cta:"Solicitar proposta",
@@ -577,7 +570,6 @@ const translations = {
     luca_bio:"Economista formado pela Universidade Federal de Minas Gerais (UFMG), com mestrado em Ciências Econômicas e Sociais pela Escola de Estudos Avançados em Ciências Sociais (EHESS) e em Economia e Desenvolvimento Sustentável pela Universidade Sorbonne (França).",
     samuel_bio:"Geógrafo formado pela Universidade de Lisboa, com intercâmbio na Universidade de Roterdã (Países Baixos) e mestre em Geografia Econômica pela Universidade de Aachen (Alemanha).",
     isabel_bio:"Graduanda em International Business Administration pela Escola Superior Fresenius (Alemanha), com período de intercâmbio na Shanghai University (China) e na University of Technology Sydney (Austrália).",
-    about_closing:"Juntos, estamos preparados para te ajudar da melhor forma na sua próxima viagem. Trabalhamos em português, alemão, inglês, francês, espanhol e holandês, com experiência de vida e profissional no Brasil e na Europa.",
     contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
     contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
     f_name:"Nome", f_email:"E-mail",
