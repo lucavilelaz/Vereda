@@ -169,18 +169,39 @@
   /* hero */
   .hero{padding-top:72px;padding-bottom:72px;}
   .hero .wrap{
-    display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;
+    display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;
   }
-  .hero h1{font-size:clamp(3rem,6vw,4.6rem);margin-bottom:26px;}
-  blockquote.quote{
-    margin:0 0 22px;padding-left:18px;border-left:2px solid var(--accent);
-    font-family:'Newsreader',serif;font-size:1.15rem;color:var(--ink);
-    white-space:pre-line;line-height:1.6;
+  /* Text column spans the full height of the photos:
+     title aligned with the top photo, dictionary entry + CTA with the bottom one */
+  .hero-text{display:flex;flex-direction:column;justify-content:space-between;gap:48px;}
+  .hero h1{font-size:clamp(3.4rem,7vw,5.6rem);letter-spacing:-.01em;}
+  .entry{margin-bottom:28px;}
+  .entry-word{
+    font-family:'Newsreader',Georgia,serif;font-size:1.7rem;color:var(--ink);
+    margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--border);
   }
-  .hero-cta{margin-top:8px;}
+  .entry-pos{
+    font-style:italic;font-size:1rem;color:var(--accent);margin-left:8px;
+  }
+  .entry-defs{list-style:none;counter-reset:def;margin:0;padding:0;}
+  .entry-defs li{
+    counter-increment:def;position:relative;padding-left:28px;margin-bottom:8px;
+    font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:1.1rem;
+    line-height:1.5;color:var(--ink);
+  }
+  .entry-defs li::before{
+    content:counter(def) ".";position:absolute;left:0;top:0;
+    font-style:normal;font-size:.95rem;color:var(--accent);
+  }
+  .hero-body{max-width:44ch;margin-bottom:22px;}
+  .hero-cta{margin-top:0;}
   /* Hero photos: stacked one after the other, same width and height */
   .hero-images{display:flex;flex-direction:column;gap:14px;}
-  .hero-img{width:100%;height:390px;object-fit:cover;}
+  .hero-photo{height:390px;overflow:hidden;}
+  .hero-photo img{width:100%;height:100%;object-fit:cover;}
+  /* Zoom into the kitesurfer without editing the file.
+     scale = how much to zoom; transform-origin = which point stays in place (x y) */
+  .hero-photo--kite img{transform:scale(1.7);transform-origin:48% 66%;}
   .photo-placeholder{
     background:linear-gradient(135deg,#DCCDA8 0%,#C7A874 45%,#8E8A67 100%);
     display:flex;align-items:flex-end;
@@ -302,7 +323,8 @@
     .lang-switch{display:none;}
     .lang-dropdown{display:block;}
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-img{height:290px;}
+    .hero-photo{height:290px;}
+    .hero-text{gap:28px;}
     .services-head{grid-template-columns:1fr;gap:24px;}
     .cards{grid-template-columns:1fr;}
     .card{border-left:none;border-top:1px solid var(--border);}
@@ -345,18 +367,28 @@
 
 <section class="hero">
   <div class="wrap">
-    <div>
-      <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
-      <h1>Vereda.</h1>
-      <blockquote class="quote" data-i18n="hero_quote">A direction or path someone follows in life.
-An alternative route that gets you somewhere faster; a shortcut.
-A moment or opportunity; a particular set of circumstances.</blockquote>
-      <p data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
-      <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
+    <div class="hero-text">
+      <div class="hero-top">
+        <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
+        <h1>Vereda.</h1>
+      </div>
+      <div class="hero-bottom">
+        <div class="entry">
+          <p class="entry-word">ve·re·da <span class="entry-pos" data-i18n="hero_pos">noun</span></p>
+          <ol class="entry-defs">
+            <li data-i18n="hero_def1">A direction or path someone follows in life.</li>
+            <li data-i18n="hero_def2">An alternative route that gets you somewhere faster; a shortcut.</li>
+            <li data-i18n="hero_def3">A moment or opportunity; a particular set of circumstances.</li>
+          </ol>
+        </div>
+        <p class="hero-body" data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
+        <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
+      </div>
     </div>
     <div class="hero-images">
-      <img src="hero-kite.jpg" alt="Kitesurfing at sea" class="hero-img">
-      <img src="hero-mountain.jpg" alt="Hiking a mountain ridge" class="hero-img">
+      <!-- The kite photo is zoomed in via CSS (.hero-photo--kite img); the file itself is untouched -->
+      <div class="hero-photo hero-photo--kite"><img src="hero-kite.jpg" alt="Kitesurfing at sea"></div>
+      <div class="hero-photo"><img src="hero-mountain.jpg" alt="Hiking a mountain ridge"></div>
     </div>
   </div>
 </section>
@@ -505,7 +537,10 @@ const translations = {
   en: {
     nav_approach:"Approach", nav_services:"Services", nav_about:"About", nav_contact:"Contact",
     hero_eyebrow:"PRIVATE TRAVEL CONSULTING",
-    hero_quote:"A direction or path someone follows in life.\nAn alternative route that gets you somewhere faster; a shortcut.\nA moment or opportunity; a particular set of circumstances.",
+    hero_pos:"noun",
+    hero_def1:"A direction or path someone follows in life.",
+    hero_def2:"An alternative route that gets you somewhere faster; a shortcut.",
+    hero_def3:"A moment or opportunity; a particular set of circumstances.",
     hero_body:"Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.",
     hero_cta:"Request a proposal",
     services_eyebrow:"SERVICES", services_h2:"How to travel with us",
@@ -540,7 +575,10 @@ const translations = {
   pt: {
     nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Sobre", nav_contact:"Contato",
     hero_eyebrow:"CONSULTORIA DE VIAGEM PERSONALIZADA",
-    hero_quote:"Direcionamento ou caminho que alguém segue em sua vida.\nCaminho alternativo através do qual se consegue chegar mais rápido a um determinado local; atalho.\nMomento ou oportunidade; circunstância.",
+    hero_pos:"s.f.",
+    hero_def1:"Direcionamento ou caminho que alguém segue em sua vida.",
+    hero_def2:"Caminho alternativo através do qual se consegue chegar mais rápido a um determinado local; atalho.",
+    hero_def3:"Momento ou oportunidade; circunstância.",
     hero_body:"Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos.",
     hero_cta:"Solicitar proposta",
     services_eyebrow:"SERVIÇOS", services_h2:"Como viajar com a gente",
