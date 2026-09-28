@@ -169,7 +169,7 @@
   /* hero */
   .hero{padding-top:72px;padding-bottom:72px;}
   .hero .wrap{
-    display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:center;
+    display:grid;grid-template-columns:1fr 1.2fr;gap:56px;align-items:center;
   }
   .hero h1{font-size:clamp(3rem,6vw,4.6rem);margin-bottom:26px;}
   blockquote.quote{
@@ -180,7 +180,7 @@
   .hero-cta{margin-top:8px;}
   /* Hero photos: stacked one after the other, same width and height */
   .hero-images{display:flex;flex-direction:column;gap:14px;}
-  .hero-img{width:100%;height:250px;object-fit:cover;}
+  .hero-img{width:100%;height:390px;object-fit:cover;}
   .photo-placeholder{
     background:linear-gradient(135deg,#DCCDA8 0%,#C7A874 45%,#8E8A67 100%);
     display:flex;align-items:flex-end;
@@ -234,7 +234,7 @@
   .approach h2{font-size:2.1rem;margin-bottom:28px;}
 
   /* about */
-  .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:56px;margin-top:48px;}
+  .about-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:40px;margin-top:20px;}
   .founder .photo-placeholder{height:340px;margin-bottom:22px;}
   /* Both founder photos share the same frame; each image is cropped to fit */
   .founder-photo{
@@ -246,20 +246,13 @@
   }
   .founder-photo--luca{object-position:60% center;}
   .founder-photo--samuel{object-position:center 20%;}
+  .founder-photo--isabel{object-position:center 20%;}
   .founder h3{font-size:1.5rem;margin-bottom:10px;}
   .founder .role{
     font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;
     color:var(--accent);margin-left:10px;
   }
   .founder p{max-width:46ch;margin:0;}
-  .about-closing{
-    margin:56px 0 0;
-    max-width:760px;
-    font-family:'Newsreader',Georgia,serif;
-    font-size:1.3rem;
-    line-height:1.5;
-    color:var(--ink);
-  }
 
   /* contact */
   .contact{background:var(--green);color:var(--cream);}
@@ -309,14 +302,13 @@
     .lang-switch{display:none;}
     .lang-dropdown{display:block;}
     .hero .wrap{grid-template-columns:1fr;}
-    .hero-img{height:220px;}
+    .hero-img{height:290px;}
     .services-head{grid-template-columns:1fr;gap:24px;}
     .cards{grid-template-columns:1fr;}
     .card{border-left:none;border-top:1px solid var(--border);}
     .card:first-child{border-top:none;}
     .services-photos{grid-template-columns:1fr;}
     .about-grid{grid-template-columns:1fr;}
-    .about-closing{font-size:1.15rem;margin-top:44px;}
     form#contact-form{grid-template-columns:1fr;}
     section{padding:64px 0;}
     footer .wrap{flex-direction:column;align-items:flex-start;}
@@ -374,9 +366,12 @@ A moment or opportunity; a particular set of circumstances.</blockquote>
     <div class="services-head">
       <div>
         <span class="eyebrow" data-i18n="services_eyebrow">SERVICES</span>
-        <h2 data-i18n="services_h2">Ways to travel with us.</h2>
+        <h2 data-i18n="services_h2">How to travel with us</h2>
       </div>
-      <p data-i18n="services_intro">We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.</p>
+      <div>
+        <p data-i18n="services_intro">We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.</p>
+        <p data-i18n="about_closing">Together, we're ready to help you make the most of your next trip. We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.</p>
+      </div>
     </div>
     <div class="cards">
       <div class="card">
@@ -402,7 +397,7 @@ A moment or opportunity; a particular set of circumstances.</blockquote>
 <section id="approach" class="approach border-top">
   <div class="wrap">
     <span class="eyebrow" data-i18n="approach_eyebrow">APPROACH</span>
-    <h2 data-i18n="approach_h2">The route you choose changes what you see.</h2>
+    <h2 data-i18n="approach_h2">The route you choose changes what you see</h2>
     <p data-i18n="approach_p1">Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.</p>
     <p data-i18n="approach_p2">We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.</p>
   </div>
@@ -411,7 +406,6 @@ A moment or opportunity; a particular set of circumstances.</blockquote>
 <section id="about" class="border-top">
   <div class="wrap">
     <span class="eyebrow" data-i18n="about_eyebrow">ABOUT</span>
-    <h2 data-i18n="about_h2">We're an economist and a geographer, passionate about travel.</h2>
     <div class="about-grid">
       <div class="founder">
         <img src="luca.jpg" alt="Luca Vilela Zwernemann" class="founder-photo founder-photo--luca">
@@ -421,10 +415,14 @@ A moment or opportunity; a particular set of circumstances.</blockquote>
       <div class="founder">
         <img src="IMG_6771.JPG" alt="Samuel Vilela Zwernemann" class="founder-photo founder-photo--samuel">
         <h3>Samuel Vilela Zwernemann</h3>
-        <p data-i18n="samuel_bio">Geographer from the University of Lisbon, with an exchange semester at a university in Rotterdam (Netherlands) and a master's in Economic Geography from the University of Aachen (Germany).</p>
+        <p data-i18n="samuel_bio">Geographer from the University of Lisbon, with an exchange semester at the University of Rotterdam (Netherlands) and a master's in Economic Geography from the University of Aachen (Germany).</p>
+      </div>
+      <div class="founder">
+        <img src="isabel.jpg" alt="Isabel Vilela Wetz" class="founder-photo founder-photo--isabel">
+        <h3>Isabel Vilela Wetz</h3>
+        <p data-i18n="isabel_bio">Undergraduate in International Business Administration at Fresenius University of Applied Sciences (Germany), with exchange periods at Shanghai University (China) and the University of Technology Sydney (Australia).</p>
       </div>
     </div>
-    <p class="about-closing" data-i18n="about_closing">Together, we're ready to help you make the most of your next trip. We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.</p>
   </div>
 </section>
 
@@ -510,7 +508,7 @@ const translations = {
     hero_quote:"A direction or path someone follows in life.\nAn alternative route that gets you somewhere faster; a shortcut.\nA moment or opportunity; a particular set of circumstances.",
     hero_body:"Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.",
     hero_cta:"Request a proposal",
-    services_eyebrow:"SERVICES", services_h2:"Two ways to travel with us.",
+    services_eyebrow:"SERVICES", services_h2:"How to travel with us",
     services_intro:"We're a group of consultants who tailor the planning to what you need. Starting from your itinerary and budget, each trip is built around the regions, themes and pace you ask for.",
     service1_title:"Custom itineraries",
     service1_body:"Trips designed around your interests and your group's interests: architecture, music, gastronomy, history, nature, sports, or a combination.",
@@ -518,12 +516,13 @@ const translations = {
     service2_title:"Group trips",
     service2_body:"Support organizing group trips, based on each traveller's availability, budget and interests.",
     service2_cta:"Request a proposal",
-    approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see.",
+    approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see",
     approach_p1:"Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.",
     approach_p2:"We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.",
-    about_eyebrow:"ABOUT", about_h2:"We're an economist and a geographer, passionate about travel.",
+    about_eyebrow:"ABOUT",
     luca_bio:"Economist from the Federal University of Minas Gerais (UFMG), with a master's in Economic and Social Sciences from the School for Advanced Studies in the Social Sciences (EHESS) and a master's in Economics and Sustainable Development from Sorbonne University (France).",
-    samuel_bio:"Geographer from the University of Lisbon, with an exchange semester at a university in Rotterdam (Netherlands) and a master's in Economic Geography from the University of Aachen (Germany).",
+    samuel_bio:"Geographer from the University of Lisbon, with an exchange semester at the University of Rotterdam (Netherlands) and a master's in Economic Geography from the University of Aachen (Germany).",
+    isabel_bio:"Undergraduate in International Business Administration at Fresenius University of Applied Sciences (Germany), with exchange periods at Shanghai University (China) and the University of Technology Sydney (Australia).",
     about_closing:"Together, we're ready to help you make the most of your next trip. We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.",
     contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
     contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
@@ -544,7 +543,7 @@ const translations = {
     hero_quote:"Direcionamento ou caminho que alguém segue em sua vida.\nCaminho alternativo através do qual se consegue chegar mais rápido a um determinado local; atalho.\nMomento ou oportunidade; circunstância.",
     hero_body:"Com base na nossa experiência, te ajudamos a criar o seu roteiro sob medida e a montar a sua viagem individual, em grupo ou em família, para destinos cuidadosamente escolhidos.",
     hero_cta:"Solicitar proposta",
-    services_eyebrow:"SERVIÇOS", services_h2:"Formas de viajar com a gente.",
+    services_eyebrow:"SERVIÇOS", services_h2:"Como viajar com a gente",
     services_intro:"Somos um grupo de consultores que individualiza o planejamento das suas necessidades. A partir do planejamento do roteiro e orçamento, cada viagem é construída em torno de regiões, temas e ritmo que você pedir.",
     service1_title:"Roteiros sob medida",
     service1_body:"Viagens desenhadas em torno dos seus interesses: arquitetura, música, gastronomia, história, natureza, esportes ou uma combinação.",
@@ -552,12 +551,13 @@ const translations = {
     service2_title:"Viagens em grupo",
     service2_body:"Apoio à organização de viagens em grupo, com base em disponibilidades, orçamentos e interesses de cada integrante.",
     service2_cta:"Solicitar proposta",
-    approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê.",
+    approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê",
     approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
     approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
-    about_eyebrow:"SOBRE", about_h2:"Somos um economista e um geógrafo apaixonados por viajar.",
+    about_eyebrow:"SOBRE",
     luca_bio:"Economista formado pela Universidade Federal de Minas Gerais (UFMG), com mestrado em Ciências Econômicas e Sociais pela Escola de Estudos Avançados em Ciências Sociais (EHESS) e em Economia e Desenvolvimento Sustentável pela Universidade Sorbonne (França).",
-    samuel_bio:"Geógrafo formado pela Universidade de Lisboa, com intercâmbio na universidade de Roterdã (Países Baixos) e mestre em Geografia Econômica pela Universidade de Aachen (Alemanha).",
+    samuel_bio:"Geógrafo formado pela Universidade de Lisboa, com intercâmbio na Universidade de Roterdã (Países Baixos) e mestre em Geografia Econômica pela Universidade de Aachen (Alemanha).",
+    isabel_bio:"Graduanda em International Business Administration pela Escola Superior Fresenius (Alemanha), com período de intercâmbio na Shanghai University (China) e na University of Technology Sydney (Austrália).",
     about_closing:"Juntos, estamos preparados para te ajudar da melhor forma na sua próxima viagem. Trabalhamos em português, alemão, inglês, francês, espanhol e holandês, com experiência de vida e profissional no Brasil e na Europa.",
     contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
     contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
