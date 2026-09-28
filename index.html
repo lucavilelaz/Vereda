@@ -171,11 +171,10 @@
   .hero .wrap{
     display:grid;grid-template-columns:1fr 1.2fr;gap:64px;align-items:stretch;
   }
-  /* Text column spans the full height of the photos:
-     title aligned with the top photo, dictionary entry + CTA with the bottom one */
-  .hero-text{display:flex;flex-direction:column;justify-content:space-between;gap:48px;}
-  .hero h1{font-size:clamp(3.4rem,7vw,5.6rem);letter-spacing:-.01em;}
-  .entry{margin-bottom:28px;}
+  /* Text column: one block, vertically centred against the stacked photos */
+  .hero-text{display:flex;flex-direction:column;justify-content:center;gap:40px;}
+  .hero h1{font-size:clamp(3.4rem,7vw,5.6rem);letter-spacing:-.01em;margin-bottom:32px;}
+  .entry{margin:0;}
   .entry-word{
     font-family:'Newsreader',Georgia,serif;font-size:1.7rem;color:var(--ink);
     margin:0 0 14px;padding-bottom:12px;border-bottom:1px solid var(--border);
@@ -201,7 +200,7 @@
   .hero-photo img{width:100%;height:100%;object-fit:cover;}
   /* Zoom into the kitesurfer without editing the file.
      scale = how much to zoom; transform-origin = which point stays in place (x y) */
-  .hero-photo--kite img{transform:scale(1.7);transform-origin:48% 66%;}
+  .hero-photo--kite img{transform:scale(1.7);transform-origin:48% 72%;}
   .photo-placeholder{
     background:linear-gradient(135deg,#DCCDA8 0%,#C7A874 45%,#8E8A67 100%);
     display:flex;align-items:flex-end;
@@ -292,9 +291,6 @@
   input::placeholder,textarea::placeholder{color:#8FA090;}
   select{appearance:none;-webkit-appearance:none;}
   select option{color:#111;}
-  .budget-row{display:flex;gap:8px;}
-  .budget-row input{flex:1;min-width:0;}
-  .budget-row select{width:82px;flex:none;}
   input:focus,select:focus,textarea:focus{border-bottom-color:var(--cream);}
   .submit-row{grid-column:1 / -1;margin-top:6px;}
   .submit-btn{
@@ -371,8 +367,6 @@
       <div class="hero-top">
         <span class="eyebrow" data-i18n="hero_eyebrow">PRIVATE TRAVEL CONSULTING</span>
         <h1>Vereda.</h1>
-      </div>
-      <div class="hero-bottom">
         <div class="entry">
           <p class="entry-word">ve·re·da <span class="entry-pos" data-i18n="hero_pos">noun</span></p>
           <ol class="entry-defs">
@@ -381,6 +375,8 @@
             <li data-i18n="hero_def3">A moment or opportunity; a particular set of circumstances.</li>
           </ol>
         </div>
+      </div>
+      <div class="hero-bottom">
         <p class="hero-body" data-i18n="hero_body">Drawing on our experience, we help you build a custom itinerary and put together your trip — solo, group or family — for carefully chosen destinations.</p>
         <a href="#contact" class="btn hero-cta" data-i18n="hero_cta">Request a proposal</a>
       </div>
@@ -493,26 +489,12 @@
         <input type="text" name="travelers">
       </div>
       <div class="field">
-        <label data-i18n="f_budget">Approximate budget (per person)</label>
-        <div class="budget-row">
-          <input type="text" name="budget_amount" data-i18n-ph="f_budget_ph" placeholder="e.g. 5,000">
-          <select name="budget_currency">
-            <option value="EUR">EUR</option>
-            <option value="USD">USD</option>
-            <option value="BRL">BRL</option>
-            <option value="GBP">GBP</option>
-            <option value="CHF">CHF</option>
-          </select>
-        </div>
+        <label data-i18n="f_budget">Approximate budget per person (entire trip)</label>
+        <input type="text" name="budget" data-i18n-ph="f_budget_ph" placeholder="e.g. €3,000 or R$15,000">
       </div>
       <div class="field">
         <label data-i18n="f_source">How did you hear about Vereda?</label>
-        <select name="source">
-          <option data-i18n="source_1">Friend or referral</option>
-          <option data-i18n="source_2">Instagram</option>
-          <option data-i18n="source_3">Search engine</option>
-          <option data-i18n="source_4">Other</option>
-        </select>
+        <input type="text" name="source">
       </div>
       <div class="submit-row">
         <button type="submit" class="submit-btn" data-i18n="f_submit">Send</button>
@@ -565,10 +547,9 @@ const translations = {
     f_destination:"Destination of interest", f_destination_ph:"e.g. coastal towns, architecture, a specific country",
     f_when:"When are you planning to travel?", f_when_ph:"e.g. next spring",
     f_travelers:"Number of travellers",
-    f_budget:"Approximate budget (per person)",
-    f_budget_ph:"e.g. 5,000",
+    f_budget:"Approximate budget per person (entire trip)",
+    f_budget_ph:"e.g. €3,000 or R$15,000",
     f_source:"How did you hear about Vereda?",
-    source_1:"Friend or referral", source_2:"Instagram", source_3:"Search engine", source_4:"Other",
     f_submit:"Send",
     form_success:"Thank you — we'll be in touch soon."
   },
@@ -603,10 +584,9 @@ const translations = {
     f_destination:"Destino de interesse", f_destination_ph:"ex.: cidades litorâneas, arquitetura, um país específico",
     f_when:"Quando pretende viajar?", f_when_ph:"ex.: próxima primavera",
     f_travelers:"Número de viajantes",
-    f_budget:"Orçamento aproximado (por pessoa)",
-    f_budget_ph:"ex.: 5.000",
+    f_budget:"Orçamento aproximado por pessoa (viagem completa)",
+    f_budget_ph:"ex.: R$ 15.000 ou € 3.000",
     f_source:"Como você conheceu a Vereda?",
-    source_1:"Indicação de amigo", source_2:"Instagram", source_3:"Busca no Google", source_4:"Outro",
     f_submit:"Enviar",
     form_success:"Obrigado — retornaremos em breve."
   }
