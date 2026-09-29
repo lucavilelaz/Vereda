@@ -238,7 +238,29 @@
 
   /* services */
   .services-eyebrow{margin-bottom:28px;}
-  .cards{display:grid;grid-template-columns:1fr 1fr;gap:0;border:1px solid var(--border);}
+  .row-label{
+    font-family:'Newsreader',Georgia,serif;font-style:italic;font-size:1.25rem;
+    color:var(--ink);margin:0 0 16px;
+  }
+  .cards + .row-label{margin-top:48px;}
+  .cards{display:grid;grid-template-columns:repeat(3,1fr);gap:0;border:1px solid var(--border);}
+  .card{display:flex;flex-direction:column;align-items:flex-start;}
+  .card p{flex:0;}
+  .examples{list-style:none;margin:0 0 20px;padding:0;flex:1;}
+  .examples li{position:relative;padding-left:16px;margin-bottom:6px;font-size:.86rem;line-height:1.45;color:var(--ink-soft);font-style:italic;}
+  .examples li::before{content:'—';position:absolute;left:0;color:var(--accent);font-style:normal;}
+  .card .gloss{font-family:'Newsreader',Georgia,serif;font-style:italic;color:var(--accent);margin:-8px 0 12px;}
+  .card .gloss:empty{display:none;}
+  .card .price{font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);margin-bottom:16px;}
+  .row-sub{font-family:'Inter',sans-serif;font-style:normal;font-size:.8rem;color:var(--ink-soft);margin-left:10px;}
+  .services-spacer{height:40px;}
+  .entry-defs a{text-decoration:none;color:inherit;border-bottom:1px solid transparent;transition:border-color .2s;}
+  .entry-defs a:hover{border-bottom-color:var(--accent);}
+  .how-h2{font-size:2.1rem;margin-bottom:40px;}
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:32px;}
+  .step .num{font-family:'Newsreader',serif;font-style:italic;color:var(--accent);font-size:1.3rem;display:block;margin-bottom:8px;}
+  .step h3{font-size:1.25rem;margin-bottom:10px;}
+  .step p{font-size:.92rem;}
   .card{padding:40px;border-left:1px solid var(--border);}
   .card:first-child{border-left:none;}
   .card .num{font-family:'Newsreader',serif;font-style:italic;color:var(--accent);font-size:1.3rem;margin-bottom:10px;display:block;}
@@ -249,6 +271,36 @@
   /* Shows more of the bottom of the photo (the two people sitting).
      0% = top of the image, 100% = bottom */
   .services-photo--window{object-position:center 85%;}
+
+
+  /* calculator */
+  .calc-h2{font-size:2.1rem;margin-bottom:14px;}
+  .calc-sub{max-width:620px;margin-bottom:36px;}
+  .calc-controls{display:grid;grid-template-columns:auto 1fr;gap:40px;align-items:end;margin-bottom:32px;}
+  .calc-toggle{display:flex;border:1px solid var(--ink);}
+  .calc-toggle button{
+    background:none;border:none;padding:11px 18px;cursor:pointer;
+    font-family:'Inter',sans-serif;font-size:.72rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink);
+  }
+  .calc-toggle button.active{background:var(--ink);color:var(--bg);}
+  .calc-budget label{display:block;font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-soft);margin-bottom:6px;}
+  .calc-input-row{display:flex;align-items:baseline;gap:8px;border-bottom:1px solid var(--ink);max-width:360px;}
+  .calc-cur{font-family:'Newsreader',Georgia,serif;font-size:1.6rem;color:var(--ink-soft);}
+  #calc-input{
+    border:none;background:transparent;outline:none;width:100%;
+    font-family:'Newsreader',Georgia,serif;font-size:2rem;color:var(--ink);padding:4px 0;
+  }
+  #calc-range{width:100%;max-width:360px;margin-top:14px;accent-color:var(--accent);}
+  .calc-results{display:grid;grid-template-columns:repeat(3,1fr);border:1px solid var(--border);}
+  .calc-card{padding:28px;border-left:1px solid var(--border);display:flex;flex-direction:column;}
+  .calc-card:first-child{border-left:none;}
+  .calc-card h3{font-size:1.35rem;margin-bottom:4px;}
+  .calc-hint{font-size:.82rem;color:var(--ink-soft);margin-bottom:20px;min-height:2.4em;}
+  .calc-label{font-size:.68rem;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-soft);}
+  .calc-trip-big{font-family:'Newsreader',Georgia,serif;font-size:1.9rem;color:var(--ink);line-height:1.1;margin:4px 0 8px;}
+  .calc-fee-small{font-size:.8rem;color:var(--ink-soft);margin-bottom:22px;}
+  .calc-card .btn{margin-top:auto;align-self:flex-start;}
+  .calc-note{font-size:.82rem;margin:16px 0 0;max-width:760px;}
 
   /* approach */
   .approach .wrap{max-width:760px;}
@@ -323,6 +375,12 @@
     .hero-photo{height:290px;}
     .hero-text{gap:28px;}
     .cards{grid-template-columns:1fr;}
+    .steps{grid-template-columns:1fr;gap:24px;}
+    .calc-controls{grid-template-columns:1fr;gap:24px;}
+    .calc-results{grid-template-columns:1fr;}
+    .calc-card{border-left:none;border-top:1px solid var(--border);}
+    .calc-card:first-child{border-top:none;}
+    .row-sub{display:block;margin:4px 0 0;}
     .card{border-left:none;border-top:1px solid var(--border);}
     .card:first-child{border-top:none;}
     .services-photos{grid-template-columns:1fr;}
@@ -342,6 +400,8 @@
     <nav>
       <a href="#approach" data-i18n="nav_approach">Approach</a>
       <a href="#services" data-i18n="nav_services">Services</a>
+      <a href="#calc" data-i18n="nav_calc">Simulate</a>
+      <a href="#how" data-i18n="nav_how">How it works</a>
       <a href="#about" data-i18n="nav_about">About</a>
     </nav>
     <div class="header-right">
@@ -372,9 +432,9 @@
         <div class="entry">
           <p class="entry-word">ve·re·da <span class="entry-pos" data-i18n="hero_pos">noun · Brazilian Portuguese</span></p>
           <ol class="entry-defs">
-            <li data-i18n="hero_def1">A direction or path someone follows in life.</li>
-            <li data-i18n="hero_def2">An alternative route that gets you somewhere faster; a shortcut.</li>
-            <li data-i18n="hero_def3">A moment or opportunity; a particular set of circumstances.</li>
+            <li><a href="#svc-direcao" data-i18n="hero_def1">A direction or path someone follows in life.</a></li>
+            <li><a href="#svc-atalho" data-i18n="hero_def2">An alternative route that gets you somewhere faster; a shortcut.</a></li>
+            <li><a href="#svc-momento" data-i18n="hero_def3">A moment or opportunity; a particular set of circumstances.</a></li>
           </ol>
         </div>
       </div>
@@ -398,23 +458,135 @@
 <section id="services">
   <div class="wrap">
     <span class="eyebrow services-eyebrow" data-i18n="services_eyebrow">SERVICES</span>
+    <p class="row-label"><span data-i18n="svc_row_you">For you and your family</span> <span class="row-sub" data-i18n="svc_row_you_sub"></span></p>
     <div class="cards">
-      <div class="card">
+      <div class="card" id="svc-direcao">
         <span class="num">01</span>
-        <h3 data-i18n="service1_title">Custom itineraries</h3>
-        <p data-i18n="service1_body">Trips designed around your interests: architecture, music, gastronomy, history, nature, sports, or a combination.</p>
-        <a href="#contact" class="btn" data-i18n="service1_cta">Request a proposal</a>
+        <h3>Direção</h3>
+        <span class="gloss" data-i18n="svc_direcao_gloss"></span>
+        <p data-i18n="svc_direcao_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_direcao_ex1"></li>
+          <li data-i18n="svc_direcao_ex2"></li>
+          <li data-i18n="svc_direcao_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_direcao_price"></span>
+        <a href="#contact" class="btn" data-service="Direção" data-i18n="svc_cta">Request a proposal</a>
       </div>
-      <div class="card">
+      <div class="card" id="svc-atalho">
         <span class="num">02</span>
-        <h3 data-i18n="service2_title">Group trips</h3>
-        <p data-i18n="service2_body">Support organizing group trips, based on each traveller's availability, budget and interests.</p>
-        <a href="#contact" class="btn" data-i18n="service2_cta">Request a proposal</a>
+        <h3>Atalho</h3>
+        <span class="gloss" data-i18n="svc_atalho_gloss"></span>
+        <p data-i18n="svc_atalho_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_atalho_ex1"></li>
+          <li data-i18n="svc_atalho_ex2"></li>
+          <li data-i18n="svc_atalho_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_atalho_price"></span>
+        <a href="#contact" class="btn" data-service="Atalho" data-i18n="svc_cta">Request a proposal</a>
+      </div>
+      <div class="card" id="svc-momento">
+        <span class="num">03</span>
+        <h3>Momento</h3>
+        <span class="gloss" data-i18n="svc_momento_gloss"></span>
+        <p data-i18n="svc_momento_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_momento_ex1"></li>
+          <li data-i18n="svc_momento_ex2"></li>
+          <li data-i18n="svc_momento_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_momento_price"></span>
+        <a href="#contact" class="btn" data-service="Momento" data-i18n="svc_cta">Request a proposal</a>
       </div>
     </div>
+    <p class="row-label"><span data-i18n="svc_row_groups">For groups</span> <span class="row-sub" data-i18n="svc_row_groups_sub"></span></p>
+    <div class="cards">
+      <div class="card" id="svc-amigos">
+        <span class="num">01</span>
+        <h3>Amigos somos</h3>
+        <span class="gloss" data-i18n="svc_amigos_gloss"></span>
+        <p data-i18n="svc_amigos_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_amigos_ex1"></li>
+          <li data-i18n="svc_amigos_ex2"></li>
+          <li data-i18n="svc_amigos_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_amigos_price"></span>
+        <a href="#contact" class="btn" data-service="Amigos somos" data-i18n="svc_cta">Request a proposal</a>
+      </div>
+      <div class="card" id="svc-nonada">
+        <span class="num">02</span>
+        <h3>Nonada</h3>
+        <span class="gloss" data-i18n="svc_nonada_gloss"></span>
+        <p data-i18n="svc_nonada_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_nonada_ex1"></li>
+          <li data-i18n="svc_nonada_ex2"></li>
+          <li data-i18n="svc_nonada_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_nonada_price"></span>
+        <a href="#contact" class="btn" data-service="Nonada" data-i18n="svc_cta">Request a proposal</a>
+      </div>
+      <div class="card" id="svc-travessia">
+        <span class="num">03</span>
+        <h3>Travessia</h3>
+        <span class="gloss" data-i18n="svc_travessia_gloss"></span>
+        <p data-i18n="svc_travessia_body"></p>
+        <ul class="examples">
+          <li data-i18n="svc_travessia_ex1"></li>
+          <li data-i18n="svc_travessia_ex2"></li>
+          <li data-i18n="svc_travessia_ex3"></li>
+        </ul>
+        <span class="price" data-i18n="svc_travessia_price"></span>
+        <a href="#contact" class="btn" data-service="Travessia" data-i18n="svc_cta">Request a proposal</a>
+      </div>
+    </div>
+    <div class="services-spacer"></div>
     <div class="services-photos">
       <img src="IMG_0346.JPG" alt="Gull flying past a building facade" class="services-photo">
       <img src="IMG_2161.JPG" alt="Two people sitting by a window at dusk" class="services-photo services-photo--window">
+    </div>
+  </div>
+</section>
+
+<section id="calc" class="calc border-top">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="calc_eyebrow">SIMULATE</span>
+    <h2 class="calc-h2" data-i18n="calc_h2">What it costs, Vereda included</h2>
+    <p class="calc-sub" data-i18n="calc_sub"></p>
+
+    <div class="calc-controls">
+      <div class="calc-toggle" role="group">
+        <button type="button" class="active" data-line="family" data-i18n="calc_family">For you and your family</button>
+        <button type="button" data-line="group" data-i18n="calc_group">For groups</button>
+      </div>
+      <div class="calc-budget">
+        <label for="calc-input" data-i18n="calc_budget_label">Total trip budget</label>
+        <div class="calc-input-row">
+          <span id="calc-cur" class="calc-cur">R$</span>
+          <input id="calc-input" type="text" inputmode="numeric" autocomplete="off">
+        </div>
+        <input id="calc-range" type="range" min="5000" max="300000" step="1000">
+      </div>
+    </div>
+
+    <div class="calc-results" id="calc-results"></div>
+
+    <p class="calc-note" data-i18n="calc_note"></p>
+    <p class="calc-note" data-i18n="calc_addons"></p>
+  </div>
+</section>
+
+<section id="how" class="border-top">
+  <div class="wrap">
+    <span class="eyebrow" data-i18n="how_eyebrow">HOW IT WORKS</span>
+    <h2 class="how-h2" data-i18n="how_h2">From first contact to the trip</h2>
+    <div class="steps">
+      <div class="step"><span class="num">1</span><h3 data-i18n="how_s1_t"></h3><p data-i18n="how_s1_b"></p></div>
+      <div class="step"><span class="num">2</span><h3 data-i18n="how_s2_t"></h3><p data-i18n="how_s2_b"></p></div>
+      <div class="step"><span class="num">3</span><h3 data-i18n="how_s3_t"></h3><p data-i18n="how_s3_b"></p></div>
+      <div class="step"><span class="num">4</span><h3 data-i18n="how_s4_t"></h3><p data-i18n="how_s4_b"></p></div>
     </div>
   </div>
 </section>
@@ -474,7 +646,19 @@
         <input type="email" name="email" required>
       </div>
       <div class="field full">
-        <label data-i18n="f_destination">Destination of interest</label>
+        <label data-i18n="f_service">Which service are you interested in?</label>
+        <select name="service" id="service-select">
+          <option value="" data-i18n="f_service_unsure">Not sure yet</option>
+          <option value="Direção">Direção</option>
+          <option value="Atalho">Atalho</option>
+          <option value="Momento">Momento</option>
+          <option value="Amigos somos">Amigos somos</option>
+          <option value="Nonada">Nonada</option>
+          <option value="Travessia">Travessia</option>
+        </select>
+      </div>
+      <div class="field full">
+        <label data-i18n="f_destination">Destination or event of interest</label>
         <input type="text" name="destination" data-i18n-ph="f_destination_ph" placeholder="e.g. coastal towns, architecture, a specific country">
       </div>
       <div class="field">
@@ -486,8 +670,8 @@
         <input type="text" name="travelers">
       </div>
       <div class="field">
-        <label data-i18n="f_budget">Approximate budget per person (entire trip)</label>
-        <input type="text" name="budget" data-i18n-ph="f_budget_ph" placeholder="e.g. €3,000 or R$15,000">
+        <label data-i18n="f_budget">Total trip budget (Vereda curation included)</label>
+        <input type="text" name="budget" id="form-budget" data-i18n-ph="f_budget_ph" placeholder="e.g. €8,000">
       </div>
       <div class="field">
         <label data-i18n="f_source">How did you hear about Vereda?</label>
@@ -515,8 +699,80 @@
 const translations = {
   en: {
     nav_approach:"Approach", nav_services:"Services", nav_about:"About", nav_contact:"Contact",
+    nav_how:"How it works",
+    svc_row_you:"For you and your family",
+    svc_row_groups:"For groups",
+    svc_cta:"Request a proposal",
+    svc_direcao_gloss:"direction",
+    svc_direcao_body:"You have the dates. We show you where it's worth going.",
+    svc_direcao_price:"from €250",
+    svc_atalho_gloss:"shortcut",
+    svc_atalho_body:"You already have a plan. We shorten the way.",
+    svc_atalho_price:"from €140",
+    svc_momento_gloss:"moment",
+    svc_momento_body:"You choose what you want to experience. We build the trip around it.",
+    svc_momento_price:"from €190",
+    svc_amigos_gloss:"we are friends",
+    svc_amigos_body:"You want to travel together. We show you where it's worth going.",
+    svc_amigos_price:"from €310",
+    svc_nonada_gloss:"nothing much, just the finishing touches",
+    svc_nonada_body:"You already have a plan. We add what's missing.",
+    svc_nonada_price:"from €170",
+    svc_travessia_gloss:"the crossing, together",
+    svc_travessia_body:"You choose the moment. We plan the trip for the whole group.",
+    svc_travessia_price:"from €250",
+    how_eyebrow:"HOW IT WORKS",
+    how_h2:"From first contact to the trip",
+    how_s1_t:"Conversation",
+    how_s1_b:"You fill in the form and, when needed, we talk by video to understand what you want to experience.",
+    how_s2_t:"Proposal",
+    how_s2_b:"We send a written proposal with what's included, the timeline and the price, valid for 7 days. The price is a share of the budget you declare, always with a minimum fee.",
+    how_s3_t:"Moment secured",
+    how_s3_b:"Atalho and Nonada are paid in full when you accept the proposal. For the other services, you pay 50% when you accept and 50% before delivery.",
+    how_s4_t:"Delivery",
+    how_s4_b:"Within 10 business days you receive your Caderno de Campo: a private page with the day-by-day plan, a map, a calendar with every booking deadline and notes from your curator. One round of adjustments is included.",
+    f_service:"Which service are you interested in?",
+    f_service_unsure:"Not sure yet",
+    svc_row_you_sub:"one household travelling",
+    svc_row_groups_sub:"more than one household travelling together",
+    nav_calc:"Simulate",
+    calc_eyebrow:"SIMULATE",
+    calc_h2:"What it costs, Vereda included",
+    calc_sub:"Enter the total budget for your trip, Vereda curation included, and see how it is distributed across each service.",
+    calc_family:"For you and your family",
+    calc_group:"For groups",
+    calc_budget_label:"Total trip budget",
+    calc_fee:"Vereda curation",
+    calc_trip:"For your trip",
+    calc_choose:"I want this",
+    hint_direcao:"Destination or dates still open",
+    hint_atalho:"Destination and dates already set",
+    hint_momento:"A trip built around an event",
+    hint_amigos:"Destination or dates still open",
+    hint_nonada:"Destination and dates already set",
+    hint_travessia:"A trip built around an event",
+    calc_note:"Reference values. The final amount is confirmed in your written proposal.",
+    calc_addons:"Optional: WhatsApp support from your curator during the trip. For trips above €35,000, in-person support on request.",
+    svc_direcao_ex1:"Two weeks in Brazil and no idea where to start",
+    svc_direcao_ex2:"Rio or the Northeast? You can't decide",
+    svc_direcao_ex3:"A first trip to Brazil with the kids",
+    svc_atalho_ex1:"Flights to Rio booked, the rest still open",
+    svc_atalho_ex2:"Minas Gerais in May is set, the route isn't",
+    svc_atalho_ex3:"Dates and cities fixed, but where to stay?",
+    svc_momento_ex1:"Carnival in Rio, Salvador or Belo Horizonte",
+    svc_momento_ex2:"A football match at the Maracanã or the Mineirão",
+    svc_momento_ex3:"Kitesurf season in the Northeast",
+    svc_amigos_ex1:"Friends who want Brazil but don't know where",
+    svc_amigos_ex2:"Two families planning a holiday together",
+    svc_amigos_ex3:"A milestone birthday somewhere warm",
+    svc_nonada_ex1:"Six friends with flights to São Paulo",
+    svc_nonada_ex2:"A group with fixed dates but different budgets",
+    svc_nonada_ex3:"A family reunion that's already in motion",
+    svc_travessia_ex1:"A group heading to Carnival together",
+    svc_travessia_ex2:"Friends travelling for a big match",
+    svc_travessia_ex3:"A wedding in Brazil with guests from several households",
     hero_eyebrow:"PRIVATE TRAVEL CONSULTING",
-    hero_pos:"noun · Portuguese",
+    hero_pos:"noun · Brazilian Portuguese",
     hero_def1:"A direction or path someone follows in life.",
     hero_def2:"An alternative route that gets you somewhere faster; a shortcut.",
     hero_def3:"A moment or opportunity; a particular set of circumstances.",
@@ -525,12 +781,6 @@ const translations = {
     hero_p3:"We work in Portuguese, German, English, French, Spanish and Dutch, with life and professional experience in Brazil and Europe.",
     hero_cta:"Request a proposal",
     services_eyebrow:"SERVICES",
-    service1_title:"Custom itineraries",
-    service1_body:"Trips designed around your interests and your group's interests: architecture, music, gastronomy, history, nature, sports, or a combination.",
-    service1_cta:"Request a proposal",
-    service2_title:"Group trips",
-    service2_body:"Support organizing group trips, based on each traveller's availability, budget and interests.",
-    service2_cta:"Request a proposal",
     approach_eyebrow:"APPROACH", approach_h2:"The route you choose changes what you see",
     approach_p1:"Travel is about far more than checking destinations off a list. We rethink what a traditional travel agency does, helping you cut through the endless sea of travel content out there.",
     approach_p2:"We help you choose your route based on your time, budget and personal interests. We talk through your available time and the pace you want, then propose an itinerary with clear reasoning: why these places, in this order, at this time of year, make sense for you and your group. We adjust until the plan fits and, if you'd like, we support the practical side too: flights, hotels, activities and more.",
@@ -541,19 +791,91 @@ const translations = {
     contact_eyebrow:"CONTACT", contact_h2:"Tell us about your trip.",
     contact_sub:"A few details help us put together a first proposal. We'll reply personally, usually within two business days.",
     f_name:"Name", f_email:"Email",
-    f_destination:"Destination of interest", f_destination_ph:"e.g. coastal towns, architecture, a specific country",
+    f_destination:"Destination or event of interest", f_destination_ph:"e.g. coastal towns, architecture, a specific country",
     f_when:"When are you planning to travel?", f_when_ph:"e.g. next spring",
     f_travelers:"Number of travellers",
-    f_budget:"Approximate budget per person (entire trip)",
-    f_budget_ph:"e.g. €3,000 or R$15,000",
+    f_budget:"Total trip budget (Vereda curation included)",
+    f_budget_ph:"e.g. €8,000",
     f_source:"How did you hear about Vereda?",
     f_submit:"Send",
     form_success:"Thank you — we'll be in touch soon."
   },
   de: {
     nav_approach:"Ansatz", nav_services:"Leistungen", nav_about:"Über uns", nav_contact:"Kontakt",
+    nav_how:"So funktioniert's",
+    svc_row_you:"Für dich und deine Familie",
+    svc_row_groups:"Für Gruppen",
+    svc_cta:"Angebot anfragen",
+    svc_direcao_gloss:"Richtung",
+    svc_direcao_body:"Du hast die Daten. Wir zeigen dir, wohin sich die Reise lohnt.",
+    svc_direcao_price:"ab 250 €",
+    svc_atalho_gloss:"Abkürzung",
+    svc_atalho_body:"Du hast schon einen Plan. Wir kürzen den Weg ab.",
+    svc_atalho_price:"ab 140 €",
+    svc_momento_gloss:"Moment",
+    svc_momento_body:"Du wählst, was du erleben willst. Wir bauen die Reise darum herum.",
+    svc_momento_price:"ab 190 €",
+    svc_amigos_gloss:"Freunde sind wir",
+    svc_amigos_body:"Ihr wollt zusammen reisen. Wir zeigen euch, wohin es sich lohnt.",
+    svc_amigos_price:"ab 310 €",
+    svc_nonada_gloss:"nicht der Rede wert, nur der letzte Schliff",
+    svc_nonada_body:"Ihr habt schon einen Plan. Wir ergänzen, was noch fehlt.",
+    svc_nonada_price:"ab 170 €",
+    svc_travessia_gloss:"gemeinsam unterwegs",
+    svc_travessia_body:"Ihr wählt den Moment. Wir planen die Reise für die ganze Gruppe.",
+    svc_travessia_price:"ab 250 €",
+    how_eyebrow:"SO FUNKTIONIERT'S",
+    how_h2:"Vom ersten Kontakt bis zur Reise",
+    how_s1_t:"Gespräch",
+    how_s1_b:"Du füllst das Formular aus und, wenn nötig, sprechen wir per Video, um zu verstehen, was du erleben willst.",
+    how_s2_t:"Angebot",
+    how_s2_b:"Wir schicken dir ein schriftliches Angebot mit Leistungsumfang, Zeitrahmen und Preis, gültig für 7 Tage. Der Preis ist ein Anteil am Budget, das du angibst, immer mit einem Mindesthonorar.",
+    how_s3_t:"Moment gesichert",
+    how_s3_b:"Atalho und Nonada zahlst du vollständig, wenn du das Angebot annimmst. Bei den anderen Services zahlst du 50 % bei der Annahme und 50 % vor der Lieferung.",
+    how_s4_t:"Lieferung",
+    how_s4_b:"Innerhalb von 10 Werktagen bekommst du dein Caderno de Campo: eine private Seite mit dem Tagesplan, einer Karte, einem Kalender mit allen Buchungsfristen und Notizen deines Kurators. Eine Überarbeitungsrunde ist inklusive.",
+    f_service:"Welcher Service interessiert dich?",
+    f_service_unsure:"Weiß ich noch nicht",
+    svc_row_you_sub:"ein Haushalt reist",
+    svc_row_groups_sub:"mehrere Haushalte reisen zusammen",
+    nav_calc:"Rechner",
+    calc_eyebrow:"RECHNER",
+    calc_h2:"Was es kostet, Vereda inklusive",
+    calc_sub:"Gib das Gesamtbudget deiner Reise ein, inklusive Vereda-Kuratierung, und sieh, wie es sich bei jedem Service verteilt.",
+    calc_family:"Für dich und deine Familie",
+    calc_group:"Für Gruppen",
+    calc_budget_label:"Gesamtbudget der Reise",
+    calc_fee:"Vereda-Kuratierung",
+    calc_trip:"Für deine Reise",
+    calc_choose:"Das will ich",
+    hint_direcao:"Ziel oder Daten noch offen",
+    hint_atalho:"Ziel und Daten stehen fest",
+    hint_momento:"Eine Reise rund um ein Event",
+    hint_amigos:"Ziel oder Daten noch offen",
+    hint_nonada:"Ziel und Daten stehen fest",
+    hint_travessia:"Eine Reise rund um ein Event",
+    calc_note:"Richtwerte. Der endgültige Betrag steht in deinem schriftlichen Angebot.",
+    calc_addons:"Optional: WhatsApp-Begleitung durch deinen Kurator während der Reise. Für Reisen ab 35.000 € persönliche Begleitung auf Anfrage.",
+    svc_direcao_ex1:"Zwei Wochen Brasilien und keine Ahnung, wo anfangen",
+    svc_direcao_ex2:"Rio oder der Nordosten? Du kannst dich nicht entscheiden",
+    svc_direcao_ex3:"Die erste Brasilienreise mit den Kindern",
+    svc_atalho_ex1:"Flüge nach Rio gebucht, der Rest ist offen",
+    svc_atalho_ex2:"Minas Gerais im Mai steht fest, die Route noch nicht",
+    svc_atalho_ex3:"Daten und Städte stehen, aber wo übernachten?",
+    svc_momento_ex1:"Karneval in Rio, Salvador oder Belo Horizonte",
+    svc_momento_ex2:"Ein Fußballspiel im Maracanã oder im Mineirão",
+    svc_momento_ex3:"Die Kitesaison im Nordosten",
+    svc_amigos_ex1:"Freunde, die nach Brasilien wollen, aber nicht wissen, wohin",
+    svc_amigos_ex2:"Zwei Familien, die gemeinsam Urlaub machen wollen",
+    svc_amigos_ex3:"Ein runder Geburtstag irgendwo, wo es warm ist",
+    svc_nonada_ex1:"Sechs Freunde mit Flügen nach São Paulo",
+    svc_nonada_ex2:"Eine Gruppe mit festen Daten, aber unterschiedlichen Budgets",
+    svc_nonada_ex3:"Ein Familientreffen, das schon in Planung ist",
+    svc_travessia_ex1:"Eine Gruppe, die gemeinsam zum Karneval fährt",
+    svc_travessia_ex2:"Freunde, die für ein großes Spiel reisen",
+    svc_travessia_ex3:"Eine Hochzeit in Brasilien mit Gästen aus mehreren Haushalten",
     hero_eyebrow:"INDIVIDUELLE REISEBERATUNG",
-    hero_pos:"Substantiv · Portugiesisch",
+    hero_pos:"Substantiv · brasilianisches Portugiesisch",
     hero_def1:"Richtung oder Weg, dem jemand im Leben folgt.",
     hero_def2:"Alternativer Weg, auf dem man schneller an einen bestimmten Ort gelangt; Abkürzung.",
     hero_def3:"Moment oder Gelegenheit; Umstand.",
@@ -562,12 +884,6 @@ const translations = {
     hero_p3:"Wir beraten auf Portugiesisch, Deutsch, Englisch, Französisch, Spanisch und Niederländisch – mit Lebens- und Berufserfahrung in Brasilien und Europa.",
     hero_cta:"Angebot anfragen",
     services_eyebrow:"LEISTUNGEN",
-    service1_title:"Maßgeschneiderte Reiserouten",
-    service1_body:"Reisen rund um deine Interessen: Architektur, Musik, Kulinarik, Geschichte, Natur, Sport oder eine Kombination daraus.",
-    service1_cta:"Angebot anfragen",
-    service2_title:"Gruppenreisen",
-    service2_body:"Unterstützung bei der Organisation von Gruppenreisen – abgestimmt auf Verfügbarkeit, Budget und Interessen aller Mitreisenden.",
-    service2_cta:"Angebot anfragen",
     approach_eyebrow:"ANSATZ", approach_h2:"Die Route, die du wählst, verändert, was du siehst",
     approach_p1:"Reisen ist viel mehr, als Ziele von einer Liste abzuhaken. Wir denken die Arbeit klassischer Reisebüros neu und helfen dir, dich im endlosen Meer an Reiseinhalten nicht zu verlieren.",
     approach_p2:"Wir unterstützen dich bei der Wahl deiner Route – nach deiner Zeit, deinem Budget und deinen persönlichen Interessen. Wir sprechen über die verfügbare Zeit und das gewünschte Tempo und schlagen eine Route mit klarer Logik vor: warum diese Orte, in dieser Reihenfolge, zu dieser Jahreszeit für dich und deine Gruppe sinnvoll sind. Wir passen den Plan an, bis er stimmt, und helfen auf Wunsch auch bei der praktischen Umsetzung: Buchung von Flügen, Hotels, Aktivitäten und mehr.",
@@ -578,17 +894,89 @@ const translations = {
     contact_eyebrow:"KONTAKT", contact_h2:"Erzähl uns von deiner Reise.",
     contact_sub:"Ein paar Angaben helfen uns, einen ersten Vorschlag zu erstellen. Wir antworten persönlich, in der Regel innerhalb von zwei Werktagen.",
     f_name:"Name", f_email:"E-Mail",
-    f_destination:"Wunschziel", f_destination_ph:"z. B. Küstenorte, Architektur, ein bestimmtes Land",
+    f_destination:"Wunschziel oder Event", f_destination_ph:"z. B. Küstenorte, Architektur, ein bestimmtes Land",
     f_when:"Wann möchtest du reisen?", f_when_ph:"z. B. nächstes Frühjahr",
     f_travelers:"Anzahl der Reisenden",
-    f_budget:"Ungefähres Budget pro Person (gesamte Reise)",
-    f_budget_ph:"z. B. 3.000 € oder 15.000 R$",
+    f_budget:"Gesamtbudget der Reise (inkl. Vereda-Kuratierung)",
+    f_budget_ph:"z. B. 8.000 €",
     f_source:"Wie hast du von Vereda erfahren?",
     f_submit:"Senden",
     form_success:"Vielen Dank – wir melden uns bald bei dir."
   },
   pt: {
-    nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Quem somos", nav_contact:"Contato",
+    nav_approach:"Abordagem", nav_services:"Serviços", nav_about:"Sobre", nav_contact:"Contato",
+    nav_how:"Como funciona",
+    svc_row_you:"Para você e sua família",
+    svc_row_groups:"Para grupos",
+    svc_cta:"Solicitar proposta",
+    svc_direcao_gloss:"",
+    svc_direcao_body:"Você tem as datas. Nós mostramos para onde vale ir.",
+    svc_direcao_price:"a partir de R$890",
+    svc_atalho_gloss:"",
+    svc_atalho_body:"Você já tem um plano. Nós encurtamos o caminho.",
+    svc_atalho_price:"a partir de R$490",
+    svc_momento_gloss:"",
+    svc_momento_body:"Você escolhe o que quer viver. Nós montamos a viagem em volta disso.",
+    svc_momento_price:"a partir de R$690",
+    svc_amigos_gloss:"",
+    svc_amigos_body:"Vocês têm a vontade de viajar juntos. Nós mostramos para onde vale ir.",
+    svc_amigos_price:"a partir de R$1.090",
+    svc_nonada_gloss:"",
+    svc_nonada_body:"Vocês já têm um plano. Nós fazemos os ajustes que faltam.",
+    svc_nonada_price:"a partir de R$590",
+    svc_travessia_gloss:"",
+    svc_travessia_body:"Vocês escolhem o momento. Nós montamos a viagem para o grupo todo.",
+    svc_travessia_price:"a partir de R$890",
+    how_eyebrow:"COMO FUNCIONA",
+    how_h2:"Do primeiro contato à viagem",
+    how_s1_t:"Conversa",
+    how_s1_b:"Você preenche o formulário e, quando necessário, conversamos por vídeo para entender o que você quer viver.",
+    how_s2_t:"Proposta",
+    how_s2_b:"Enviamos uma proposta por escrito com o que está incluído, o prazo e o valor, válida por 7 dias. O valor é uma parte do orçamento que você declara, sempre com um valor mínimo.",
+    how_s3_t:"Momento garantido",
+    how_s3_b:"Atalho e Nonada são pagos integralmente ao aceitar a proposta. Nos outros serviços, você paga 50% ao aceitar e 50% antes da entrega.",
+    how_s4_t:"Entrega",
+    how_s4_b:"Em até 10 dias úteis, você recebe o seu Caderno de Campo: uma página privada com o roteiro dia a dia, um mapa, um calendário com todos os prazos de reserva e as notas do seu curador. Uma rodada de ajustes está incluída.",
+    f_service:"Qual serviço te interessa?",
+    f_service_unsure:"Ainda não sei",
+    svc_row_you_sub:"uma casa viajando",
+    svc_row_groups_sub:"mais de uma casa viajando junto",
+    nav_calc:"Simule",
+    calc_eyebrow:"SIMULE",
+    calc_h2:"Quanto custa, já com a Vereda",
+    calc_sub:"Informe o orçamento total da sua viagem, já com a curadoria Vereda incluída, e veja como ele se distribui em cada serviço.",
+    calc_family:"Para você e sua família",
+    calc_group:"Para grupos",
+    calc_budget_label:"Orçamento total da viagem",
+    calc_fee:"Curadoria Vereda",
+    calc_trip:"Para a sua viagem",
+    calc_choose:"Quero este",
+    hint_direcao:"Destino ou datas ainda em aberto",
+    hint_atalho:"Destino e datas já definidos",
+    hint_momento:"Uma viagem em volta de um evento",
+    hint_amigos:"Destino ou datas ainda em aberto",
+    hint_nonada:"Destino e datas já definidos",
+    hint_travessia:"Uma viagem em volta de um evento",
+    calc_note:"Valores de referência. O valor final é confirmado na sua proposta por escrito.",
+    calc_addons:"Opcional: acompanhamento do seu curador por WhatsApp durante a viagem. Para viagens acima de R$200 mil, acompanhamento presencial sob consulta.",
+    svc_direcao_ex1:"15 dias de férias em julho e vontade de conhecer a Europa",
+    svc_direcao_ex2:"Portugal ou Espanha em outubro, sem saber quais cidades",
+    svc_direcao_ex3:"A primeira viagem à Europa com os filhos",
+    svc_atalho_ex1:"Voos para Lisboa já comprados, falta o resto",
+    svc_atalho_ex2:"Paris e Londres definidos, falta acertar o roteiro",
+    svc_atalho_ex3:"Destino e datas fechados, mas onde ficar?",
+    svc_momento_ex1:"A Maratona de Berlim",
+    svc_momento_ex2:"Um jogo da Bundesliga ou da Champions League",
+    svc_momento_ex3:"Os mercados de Natal na Alemanha e na Áustria",
+    svc_amigos_ex1:"Um reencontro de amigos da faculdade na Europa",
+    svc_amigos_ex2:"Duas famílias querendo viajar juntas nas férias",
+    svc_amigos_ex3:"Uma despedida de solteiro ainda sem destino",
+    svc_nonada_ex1:"Seis amigos com passagens para Madri",
+    svc_nonada_ex2:"Um grupo com datas fechadas, mas orçamentos diferentes",
+    svc_nonada_ex3:"Uma viagem de família estendida já encaminhada",
+    svc_travessia_ex1:"Um grupo de corrida rumo a uma maratona europeia",
+    svc_travessia_ex2:"Amigos indo juntos a um festival de verão na Europa",
+    svc_travessia_ex3:"Um casamento na Europa com convidados de várias casas",
     hero_eyebrow:"CONSULTORIA DE VIAGEM PERSONALIZADA",
     hero_pos:"s.f.",
     hero_def1:"Direcionamento ou caminho que alguém segue em sua vida.",
@@ -599,27 +987,21 @@ const translations = {
     hero_p3:"Trabalhamos em português, alemão, inglês, francês, espanhol e holandês, com experiência de vida e profissional no Brasil e na Europa.",
     hero_cta:"Solicitar proposta",
     services_eyebrow:"SERVIÇOS",
-    service1_title:"Roteiros sob medida",
-    service1_body:"Viagens desenhadas em torno dos seus interesses: arquitetura, música, gastronomia, história, natureza, esportes ou uma combinação.",
-    service1_cta:"Solicitar proposta",
-    service2_title:"Viagens em grupo",
-    service2_body:"Apoio à organização de viagens em grupo, com base em disponibilidades, orçamentos e interesses de cada integrante.",
-    service2_cta:"Solicitar proposta",
     approach_eyebrow:"ABORDAGEM", approach_h2:"A rota que você escolhe muda o que você vê",
     approach_p1:"Viajar é muito mais do que gabaritar destinos. Reformulamos o trabalho feito pelas agências tradicionais, ajudando você a não se perder no mar de conteúdo sobre viagens.",
-    approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos a respeito do tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
-    about_eyebrow:"QUEM SOMOS",
+    approach_p2:"Te apoiamos na escolha da sua rota, com base no seu tempo, orçamento e interesses pessoais. Conversamos sobre tempo disponível e ritmo desejado, e propomos um roteiro com uma lógica clara: por que esses lugares, nessa ordem, nessa época do ano, faria sentido para você e o seu grupo. Ajustamos até o plano encaixar e, se quiser, prestamos apoio na parte prática: reserva de voos, hotéis, atrações e muito mais.",
+    about_eyebrow:"SOBRE",
     luca_bio:"Economista formado pela Universidade Federal de Minas Gerais (UFMG), com mestrado em Ciências Econômicas e Sociais pela Escola de Estudos Avançados em Ciências Sociais (EHESS) e em Economia e Desenvolvimento Sustentável pela Universidade Sorbonne (França).",
     samuel_bio:"Geógrafo formado pela Universidade de Lisboa, com intercâmbio na Universidade de Roterdã (Países Baixos) e mestre em Geografia Econômica pela Universidade de Aachen (Alemanha).",
     isabel_bio:"Graduanda em International Business Administration pela Escola Superior Fresenius (Alemanha), com período de intercâmbio na Shanghai University (China) e na University of Technology Sydney (Austrália).",
     contact_eyebrow:"CONTATO", contact_h2:"Conte-nos sobre sua viagem.",
     contact_sub:"Alguns detalhes nos ajudam a montar uma primeira proposta. Respondemos pessoalmente, geralmente em até dois dias úteis.",
     f_name:"Nome", f_email:"E-mail",
-    f_destination:"Destino de interesse", f_destination_ph:"ex.: cidades litorâneas, arquitetura, um país específico",
+    f_destination:"Destino ou evento de interesse", f_destination_ph:"ex.: cidades litorâneas, arquitetura, um país específico",
     f_when:"Quando pretende viajar?", f_when_ph:"ex.: próxima primavera",
     f_travelers:"Número de viajantes",
-    f_budget:"Orçamento aproximado por pessoa (viagem completa)",
-    f_budget_ph:"ex.: R$ 15.000 ou € 3.000",
+    f_budget:"Orçamento total da viagem (já com a curadoria Vereda)",
+    f_budget_ph:"ex.: R$ 30.000",
     f_source:"Como você conheceu a Vereda?",
     f_submit:"Enviar",
     form_success:"Obrigado — retornaremos em breve."
@@ -648,6 +1030,7 @@ function applyLang(lang){
     b.classList.toggle('active', b.dataset.lang === lang);
   });
   document.getElementById('lang-dd-btn').textContent = lang.toUpperCase();
+  if(window.calcReady) renderCalc(true);
 }
 
 document.querySelectorAll('[data-lang]').forEach(btn=>{
@@ -663,6 +1046,93 @@ document.addEventListener('click', (e)=>{
 });
 
 applyLang('pt');
+
+/* ---------- Calculator ----------
+   Fee = rate1 on the budget up to the threshold + rate2 on the part above it,
+   never below the minimum (piso) nor above the maximum (teto).
+   The declared budget already INCLUDES the fee; "left for the trip" = budget - fee.
+   Portuguese shows BRL; English and German show EUR. */
+const PRICING = {
+  BRL:{ threshold:50000, def:30000, min:5000, max:300000, step:1000, locale:'pt-BR',
+    family:[['direcao','Direção',.05,.02,890,3990],['atalho','Atalho',.03,.01,490,1990],['momento','Momento',.04,.02,690,2990]],
+    group:[['amigos','Amigos somos',.06,.02,1090,5990],['nonada','Nonada',.04,.01,590,2990],['travessia','Travessia',.05,.02,890,4990]] },
+  EUR:{ threshold:10000, def:8000, min:1000, max:60000, step:500, locale:'de-DE',
+    family:[['direcao','Direção',.05,.02,250,990],['atalho','Atalho',.03,.01,140,490],['momento','Momento',.04,.02,190,790]],
+    group:[['amigos','Amigos somos',.06,.02,310,1540],['nonada','Nonada',.04,.01,170,740],['travessia','Travessia',.05,.02,250,1290]] }
+};
+let calcLine = 'family', calcBudget = null, calcCur = null;
+
+function calcFee(b, r1, r2, lo, hi, t){
+  const raw = r1*Math.min(b,t) + r2*Math.max(b-t,0);
+  const fee = Math.round(Math.min(Math.max(raw,lo),hi)/10)*10;
+  return {fee, flag: raw<lo ? 'min' : (raw>hi ? 'max' : '')};
+}
+function money(v, cfg, cur){
+  return new Intl.NumberFormat(cfg.locale,{style:'currency',currency:cur,maximumFractionDigits:0}).format(v);
+}
+function renderCalc(resetBudget){
+  const t = translations[currentLang];
+  const cur = currentLang === 'pt' ? 'BRL' : 'EUR';
+  const cfg = PRICING[cur];
+  if(resetBudget || calcCur !== cur || calcBudget === null){ calcBudget = cfg.def; }
+  calcCur = cur;
+  const input = document.getElementById('calc-input');
+  const range = document.getElementById('calc-range');
+  document.getElementById('calc-cur').textContent = cur === 'BRL' ? 'R$' : '€';
+  range.min = cfg.min; range.max = cfg.max; range.step = cfg.step;
+  range.value = Math.min(Math.max(calcBudget,cfg.min),cfg.max);
+  if(document.activeElement !== input){
+    input.value = new Intl.NumberFormat(cfg.locale,{maximumFractionDigits:0}).format(calcBudget);
+  }
+  const html = cfg[calcLine].map(([key,name,r1,r2,lo,hi])=>{
+    const {fee} = calcFee(calcBudget,r1,r2,lo,hi,cfg.threshold);
+    const trip = Math.max(calcBudget-fee,0);
+    return `<div class="calc-card">
+      <h3>${name}</h3>
+      <p class="calc-hint">${t['hint_'+key]}</p>
+      <span class="calc-label">${t.calc_trip}</span>
+      <div class="calc-trip-big">${money(trip,cfg,cur)}</div>
+      <div class="calc-fee-small">${t.calc_fee}: ${money(fee,cfg,cur)}</div>
+      <a href="#contact" class="btn" data-calc-service="${name}">${t.calc_choose}</a>
+    </div>`;
+  }).join('');
+  document.getElementById('calc-results').innerHTML = html;
+  document.querySelectorAll('[data-calc-service]').forEach(a=>{
+    a.addEventListener('click', ()=>{
+      const sel = document.getElementById('service-select');
+      if(sel) sel.value = a.dataset.calcService;
+      const fb = document.getElementById('form-budget');
+      if(fb) fb.value = money(calcBudget,cfg,cur);
+    });
+  });
+}
+document.querySelectorAll('.calc-toggle button').forEach(b=>{
+  b.addEventListener('click', ()=>{
+    calcLine = b.dataset.line;
+    document.querySelectorAll('.calc-toggle button').forEach(x=>x.classList.toggle('active', x===b));
+    renderCalc(false);
+  });
+});
+document.getElementById('calc-input').addEventListener('input', e=>{
+  const digits = e.target.value.replace(/\D/g,'');
+  calcBudget = digits ? parseInt(digits,10) : 0;
+  renderCalc(false);
+});
+document.getElementById('calc-input').addEventListener('blur', ()=>renderCalc(false));
+document.getElementById('calc-range').addEventListener('input', e=>{
+  calcBudget = parseInt(e.target.value,10);
+  renderCalc(false);
+});
+window.calcReady = true;
+renderCalc(true);
+
+/* Card CTA pre-selects the service in the contact form */
+document.querySelectorAll('[data-service]').forEach(a=>{
+  a.addEventListener('click', ()=>{
+    const sel = document.getElementById('service-select');
+    if(sel) sel.value = a.dataset.service;
+  });
+});
 
 /* ---------- Netlify AJAX form submit ---------- */
 const form = document.getElementById('contact-form');
